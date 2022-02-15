@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 class ICipher():
+    
     @abstractmethod
     def encrypt(self, text: str):
         pass
