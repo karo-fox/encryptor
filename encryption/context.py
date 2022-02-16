@@ -5,6 +5,7 @@ class EncryptionContext():
     cipher_list = {
         'test': ciphers.TestCipher,
         'ceasar': ciphers.CeasarCipher,
+        'switch': ciphers.SwitchCipher,
     }
 
     def __init__(self, cipher_code: str, text: str, params) -> None:
