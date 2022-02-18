@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  backend:
+    image: python:3
+
+  client:
+
+  nginx:
+    image: nginx
