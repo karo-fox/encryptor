@@ -2,7 +2,7 @@ from flask import Blueprint, current_app, request, jsonify, json
 from encryption import ciphers
 from encryption.context import EncryptionContext
 
-bp = Blueprint('encryptor', __name__)
+bp = Blueprint('encryptor', __name__, url_prefix='api/')
 
 @bp.route('/', methods=('GET', 'POST'))
 def main():
