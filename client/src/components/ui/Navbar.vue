@@ -6,15 +6,31 @@ let showMenu = ref(false);
 
 <template>
   <nav class="bg-emerald-700 text-gray-100">
-    <div class="sm:hidden">
+    <div class="sm:hidden p-4">
       <div class="grid grid-cols-5">
-        <button @click="showMenu = !showMenu" class="col-span-1">menu</button>
+        <button @click="showMenu = !showMenu" class="col-span-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
         <div class="text-lg col-span-4">Encryptor</div>
       </div>
       <div v-if="showMenu" class="grid auto-rows-max pl-2">
         <RouterLink class="row-auto" to="/">Home</RouterLink>
         <RouterLink class="row-auto" to="/about">About</RouterLink>
       </div>
+    </div>
+    <div class="hidden sm:block p-4">
+      <div class="inline text-lg p-1 px-4">Encryptor</div>
+      <RouterLink class="p-1 px-4" to="/">Home</RouterLink>
+      <RouterLink class="p-1 px-4" to="/about">About</RouterLink>
     </div>
   </nav>
 </template>

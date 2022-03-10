@@ -9,8 +9,12 @@ import Navbar from "./components/ui/Navbar.vue";
     <Navbar />
   </header>
   <main>
-    <div class="px-2 mt-3">
-      <RouterView />
+    <div class="px-2 mt-3 sm:mb-16 lg:mt-16">
+      <div class="lg:grid grid-cols-5">
+        <div class="lg:col-start-2 lg:col-span-3">
+          <RouterView />
+        </div>
+      </div>
     </div>
   </main>
 </template>
