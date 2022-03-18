@@ -1,15 +1,16 @@
 from flask import Flask
 
-from . import config, encryptor
-
 def create_app():
     app = Flask(__name__)
 
-    if app.config["ENV"] == "production":
-        app.config.from_object(config.ProductionConfig)
-    else:
-        app.config.from_object(config.DevelopmentConfig)
+    from .config import ProductionConfig, DevelopmentConfig
+    from .encryptor import bp
 
-    app.register_blueprint(encryptor.bp)
+    if app.config["ENV"] == "production":
+        app.config.from_object(ProductionConfig)
+    else:
+        app.config.from_object(DevelopmentConfig)
+
+    app.register_blueprint(bp)
 
     return app

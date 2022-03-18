@@ -1,9 +1,18 @@
 version: '3.8'
 services:
   backend:
-    image: python:3
+    image: python:3.8-slim-buster
+    build: ./backend
+    ports:
+      - 5000:5000
+    environment:
+      - FLASK_APP=api
+      - FLASK_ENV=development
+    command: ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
 
   client:
-
-  nginx:
-    image: nginx
+    image: node:17-alpine3.14
+    build: ./client
+    ports:
+      - 3000:3000
+    command: ["npm", "run", "dev"]
