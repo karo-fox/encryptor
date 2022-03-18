@@ -5,9 +5,9 @@ import { ref } from 'vue';
 import Input from './Input.vue';
 import Output from './Output.vue';
 
-let encryptedText = ref('anonymous');
-function encrypt(data: EncryptionData) {
-  encryptedText.value = useEncrypt(data);
+let encryptedText = ref('');
+async function encrypt(data: EncryptionData) {
+  encryptedText.value = await useEncrypt(data);
 }
 </script>
 
