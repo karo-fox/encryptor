@@ -5,11 +5,13 @@ import { ref } from 'vue';
 import Input from './Input.vue';
 import Output from './Output.vue';
 
-const encryptedText = ref('karolina');
-
+let encryptedText = ref('anonymous');
+function encrypt(data: EncryptionData) {
+  encryptedText.value = useEncrypt(data);
+}
 </script>
 
 <template>
-  <Input @encrypt="(data: EncryptionData) => useEncrypt(data)" />
+  <Input @encrypt-clicked="(data: EncryptionData) => encrypt(data)" />
   <Output :display-text="encryptedText"/>
 </template>

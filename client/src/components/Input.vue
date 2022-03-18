@@ -5,7 +5,7 @@ import { reactive, ref } from 'vue';
 const state: EncryptionData = reactive({
   text: '',
   cipher: '',
-  parameters: {}
+  params: {}
 })
 
 const ciphers = ref([
@@ -13,7 +13,7 @@ const ciphers = ref([
   { text: 'Switch Cipher', value: 'switch' }
 ])
 
-const emit = defineEmits(['encrypt'])
+const emit = defineEmits(['encryptClicked'])
 
 </script>
 
@@ -37,7 +37,7 @@ const emit = defineEmits(['encrypt'])
         <option v-for="option in ciphers" :value="option.value">{{ option.text }}</option>
       </select>
       <button
-        @click="$emit('encrypt', state)"
+        @click="$emit('encryptClicked', state)"
         class="rounded-full text-white bg-emerald-700 px-4 py-1 col-start-4"
       >Encrypt</button>
     </div>

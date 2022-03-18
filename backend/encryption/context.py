@@ -6,6 +6,7 @@ class EncryptionContext():
         'test': TestCipher,
         'ceasar': CeasarCipher,
         'switch': SwitchCipher,
+        'is_this_working?': TestCipher,
     }
 
     def __init__(self, cipher_code: str, text: str, params) -> None:
@@ -24,7 +25,7 @@ class EncryptionContext():
     def cipher(self, cipher: ICipher) -> None:
         self._cipher = cipher
     
-    def encrypt(self) -> None:
+    def encrypt(self) -> str:
         return self._cipher.encrypt()
 
     @classmethod

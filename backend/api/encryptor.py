@@ -4,12 +4,12 @@ from encryption.context import EncryptionContext
 
 bp = Blueprint('encryptor', __name__, url_prefix='/api')
 
-@bp.route('/', methods=('GET', 'POST'))
+@bp.route('', methods=('GET', 'POST'))
 def main():
     if request.method == 'POST':
         data = json.loads(request.data)
         try:
-            context = EncryptionContext(data['cipher-code'], data['text'], data['params'])
+            context = EncryptionContext(data['cipher'], data['text'], data['params'])
             return jsonify(result=context.encrypt())
         except AssertionError as error:
             return jsonify(exception=f"bad data: {error.args.__str__()}")
