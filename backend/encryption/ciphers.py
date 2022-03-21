@@ -46,10 +46,11 @@ class SwitchCipher(ICipher):
 
     def __init__(self, text, params) -> None:
         super().__init__(text, params)
-        assert('switch-key' in params.keys()), "'switch-key' not specified"
+        assert('switch_key' in params.keys()), "'switch_key' not specified"
 
     def encrypt(self) -> str:
-        key = self.params['switch-key'].split('-')
+        key = self.params['switch_key'].split('-')
+        print(key)
         key_map = {}
         for pair in key:
             key_map[pair[0]] = pair[1]

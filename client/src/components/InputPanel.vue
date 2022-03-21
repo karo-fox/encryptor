@@ -24,7 +24,7 @@ watch(
 
 const ciphers = [
   { text: 'Test Cipher', value: 'test', params: null },
-  { text: 'Ceasar Cipher', value: 'ceasar', params: [{ name: 'transformation', type: 'number' }] },
+  { text: 'Ceasar Cipher', value: 'ceasar', params: [{ name: 'transformation', type: 'number', validate: (val: number) => val == 0 ? 'cannot be 0' : '' }] },
   { text: 'Switch Cipher', value: 'switch', params: [{ name: 'switch-key', type: 'text' }] },
 ]
 
