@@ -46,13 +46,13 @@ class SwitchCipher(ICipher):
 
     def __init__(self, text, params) -> None:
         super().__init__(text, params)
-        assert('switch_key' in params.keys()), "'switch_key' not specified"
+        assert('switch-key' in params.keys()), "'switch-key' not specified"
 
     def encrypt(self) -> str:
-        key = self.params['switch_key'].split('-')
+        key = self.params['switch-key'].split('-')
         key_map = {}
         for pair in key:
             key_map[pair[0]] = pair[1]
             key_map[pair[1]] = pair[0]
         result = self.text.translate(str.maketrans(key_map))
-        return f"SwitchCipher {result}"
+        return result

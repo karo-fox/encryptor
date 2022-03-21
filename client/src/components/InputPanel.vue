@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import type { EncryptionData } from '@/composables/encrypt';
-import { reactive, ref } from 'vue';
+import { computed, reactive, watch } from 'vue';
+import ParametersPanel from './ParametersPanel.vue';
 
 const state: EncryptionData = reactive({
   text: '',
@@ -8,12 +9,30 @@ const state: EncryptionData = reactive({
   params: {}
 })
 
-const ciphers = ref([
-  { text: 'Ceasar Cipher', value: 'ceasar' },
-  { text: 'Switch Cipher', value: 'switch' }
-])
+const cipherParams = computed(() => {
+  return ciphers.find((cipher) => cipher.value == state.cipher)?.params;
+});
+
+watch(
+  () => state.cipher,
+  (newCipher, oldCipher) => {
+    if (newCipher !== oldCipher) {
+      state.params = {}
+    }
+  }
+)
+
+const ciphers = [
+  { text: 'Test Cipher', value: 'test', params: null },
+  { text: 'Ceasar Cipher', value: 'ceasar', params: [{ name: 'transformation', type: 'number' }] },
+  { text: 'Switch Cipher', value: 'switch', params: [{ name: 'switch-key', type: 'text' }] },
+]
 
 const emit = defineEmits(['encryptClicked'])
+
+function updateParams(param: { name: string, value: any }) {
+  state.params[param.name as keyof Object] = param.value;
+}
 
 </script>
 
@@ -40,6 +59,9 @@ const emit = defineEmits(['encryptClicked'])
         @click="$emit('encryptClicked', state)"
         class="rounded-full text-white bg-emerald-700 px-4 py-1 col-start-4"
       >Encrypt</button>
+    </div>
+    <div v-if="cipherParams">
+      <ParametersPanel :params="cipherParams" @update-params="updateParams" />
     </div>
   </div>
 </template>
