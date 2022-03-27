@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { EncryptionData } from '@/composables/encrypt';
 import { useEncrypt } from '@/composables/encrypt';
-import { ref } from 'vue';
+import { ref } from "vue";
 import InputPanel from './InputPanel.vue';
 import OutputPanel from './OutputPanel.vue';
 
@@ -13,5 +13,5 @@ async function encrypt(data: EncryptionData) {
 
 <template>
   <InputPanel @encrypt-clicked="(data: EncryptionData) => encrypt(data)" />
-  <OutputPanel :display-text="encryptedText"/>
+  <OutputPanel :display-text="encryptedText" />
 </template>
