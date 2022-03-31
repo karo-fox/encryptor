@@ -1,8 +1,7 @@
 from abc import abstractmethod
 
 
-class ICipher():
-
+class ICipher:
     @abstractmethod
     def __init__(self, text: str, cipher_params: dict) -> None:
         self.text = text
