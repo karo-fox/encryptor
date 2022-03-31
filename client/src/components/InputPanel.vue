@@ -1,13 +1,13 @@
-<script setup lang='ts'>
-import type { EncryptionData } from '@/composables/encrypt';
-import { computed, reactive, watch } from 'vue';
-import ParametersPanel from './ParametersPanel.vue';
+<script setup lang="ts">
+import type { EncryptionData } from "@/composables/encrypt";
+import { computed, reactive, watch } from "vue";
+import ParametersPanel from "./ParametersPanel.vue";
 
 const state: EncryptionData = reactive({
-  text: '',
-  cipher: '',
-  params: {}
-})
+  text: "",
+  cipher: "",
+  params: {},
+});
 
 const cipherParams = computed(() => {
   return ciphers.find((cipher) => cipher.value == state.cipher)?.params;
@@ -17,23 +17,35 @@ watch(
   () => state.cipher,
   (newCipher, oldCipher) => {
     if (newCipher !== oldCipher) {
-      state.params = {}
+      state.params = {};
     }
   }
-)
+);
 
 const ciphers = [
-  { text: 'Test Cipher', value: 'test', params: null },
-  { text: 'Ceasar Cipher', value: 'ceasar', params: [{ name: 'shift', type: 'number', validate: (val: number) => val == 0 ? 'cannot be 0' : '' }] },
-  { text: 'Switch Cipher', value: 'switch', params: [{ name: 'switch-key', type: 'text' }] },
-]
+  { text: "Test Cipher", value: "test", params: null },
+  {
+    text: "Ceasar Cipher",
+    value: "ceasar",
+    params: [
+      {
+        name: "shift",
+        type: "number",
+        validate: (val: number | string) => (val == 0 ? "cannot be 0" : ""),
+      },
+    ],
+  },
+  {
+    text: "Switch Cipher",
+    value: "switch",
+    params: [{ name: "switch-key", type: "text" }],
+  },
+];
+defineEmits(["encryptClicked"]);
 
-const emit = defineEmits(['encryptClicked'])
-
-function updateParams(param: { name: string, value: any }) {
-  state.params[param.name as keyof Object] = param.value;
+function updateParams(param: { name: string; value: unknown }) {
+  state.params[param.name as keyof Record<string, unknown>] = param.value;
 }
-
 </script>
 
 <template>
@@ -51,14 +63,26 @@ function updateParams(param: { name: string, value: any }) {
       ></textarea>
     </div>
     <div class="grid grid-cols-4">
-      <select v-model="state.cipher" name="cipher" class="col-span-2 md:col-span-1">
+      <select
+        v-model="state.cipher"
+        name="cipher"
+        class="col-span-2 md:col-span-1"
+      >
         <option value disabled selected>Choose the cipher</option>
-        <option v-for="option in ciphers" :value="option.value">{{ option.text }}</option>
+        <option
+          v-for="option in ciphers"
+          :value="option.value"
+          :key="`${option.value}-key`"
+        >
+          {{ option.text }}
+        </option>
       </select>
       <button
         @click="$emit('encryptClicked', state)"
         class="rounded-full text-white bg-emerald-700 px-4 py-1 col-start-4"
-      >Encrypt</button>
+      >
+        Encrypt
+      </button>
     </div>
     <div v-if="cipherParams">
       <ParametersPanel :params="cipherParams" @update-params="updateParams" />

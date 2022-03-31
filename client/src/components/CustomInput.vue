@@ -1,30 +1,32 @@
 <script setup lang="ts">
-import { capitalize, computed, ref, watch } from 'vue';
+import { capitalize, computed, ref, watch } from "vue";
 
 const props = defineProps<{
-  inputName: string,
-  type: string,
-  modelValue: any,
-  validate?: Function,
-}>()
+  inputName: string;
+  type: string;
+  modelValue: unknown;
+  validate?: (val: string | number) => string;
+}>();
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(["update:modelValue"]);
 
-const errorMsg = ref('');
-const label = computed(() => capitalize(props.inputName) + ':');
+const errorMsg = ref("");
+const label = computed(() => capitalize(props.inputName) + ":");
 
 const value = computed({
   get() {
-    return props.modelValue
+    return props.modelValue;
   },
   set(value) {
-    emit('update:modelValue', value)
+    emit("update:modelValue", value);
   },
-})
+});
 
 watch(value, (newValue) => {
-  errorMsg.value = props.validate ? props.validate(newValue) : '';
-})
+  errorMsg.value = props.validate
+    ? props.validate(newValue as number | string)
+    : "";
+});
 </script>
 
 <template>
