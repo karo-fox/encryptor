@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
 let showMenu = ref(false);
 </script>
 
@@ -17,10 +17,14 @@ let showMenu = ref(false);
             stroke="currentColor"
             stroke-width="2"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
-        <div class="text-lg col-span-4">Encryptor</div>
+        <div class="text-lg col-span-4">Cipherator</div>
       </div>
       <div v-if="showMenu" class="grid auto-rows-max pl-2">
         <RouterLink class="row-auto" to="/">Home</RouterLink>
@@ -28,7 +32,7 @@ let showMenu = ref(false);
       </div>
     </div>
     <div class="hidden sm:block p-4">
-      <div class="inline text-lg p-1 px-4">Encryptor</div>
+      <div class="inline text-lg p-1 px-4">Cipherer</div>
       <RouterLink class="p-1 px-4" to="/">Home</RouterLink>
       <RouterLink class="p-1 px-4" to="/about">About</RouterLink>
     </div>
