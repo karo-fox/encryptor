@@ -3,7 +3,6 @@ from flask import Blueprint, request, jsonify, json
 from ciphers.cipher import ICipher
 from ciphers.switch_cipher import SwitchCipher
 from ciphers.ceasar_cipher import CeasarCipher
-from ciphers.test_cipher import TestCipher
 from ciphers.cipher_context import CipherContext
 
 bp = Blueprint("encryptor", __name__, url_prefix="/api")
@@ -31,7 +30,6 @@ def get_cipher(cipher_data: dict) -> ICipher:
 
 def available_ciphers() -> dict:
     return {
-        "test": TestCipher,
         "ceasar": CeasarCipher,
         "switch": SwitchCipher,
     }

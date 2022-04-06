@@ -5,11 +5,12 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
-    "test:unit": "vitest --environment jsdom",
+    "test": "vitest",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "vitest": "^0.8.4",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12"
   },
@@ -31,7 +32,6 @@
     "tailwindcss": "^3.0.23",
     "typescript": "~4.5.5",
     "vite": "2.6.14",
-    "vitest": "^0.5.0",
     "vue-tsc": "^0.31.4"
   }
 }

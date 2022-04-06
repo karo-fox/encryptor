@@ -3,3 +3,5 @@ venv
 **/config.py
 .vscode
 TODO
+.pytest_cache
+tests/test_sample.py
