@@ -17,3 +17,5 @@ coverage
 .vscode
 !.vscode/extensions.json
 .eslintrc.cjs
+
+*/sample.test.ts
