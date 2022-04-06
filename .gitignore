@@ -4,3 +4,4 @@ docker-compose.yml
 */Dockerfile
 nginx.conf
 .pytest_cache
+release.txt
