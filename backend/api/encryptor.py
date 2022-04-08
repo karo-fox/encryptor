@@ -8,7 +8,7 @@ from ciphers.cipher_context import CipherContext
 bp = Blueprint("encryptor", __name__, url_prefix="/api")
 
 
-@bp.route("", methods=("GET", "POST"))
+@bp.route("", methods=["POST"])
 def main():
     if request.method == "POST":
         encryption_data = json.loads(request.data)
@@ -18,8 +18,6 @@ def main():
             return jsonify(result=context.encrypt())
         except AssertionError as error:
             return jsonify(exception=f"bad data: {error.args.__str__()}")
-
-    return jsonify(available_ciphers=available_ciphers())
 
 
 def get_cipher(cipher_data: dict) -> ICipher:
