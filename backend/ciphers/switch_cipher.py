@@ -1,3 +1,4 @@
+from typing import List
 from ciphers.cipher import ICipher
 
 
@@ -8,11 +9,12 @@ class SwitchCipher(ICipher):
 
     def encrypt(self) -> str:
         cipher_key = self.params["switch_key"].split("-")
-        key_map = self.__get_key_map(cipher_key)
+        key_map = self.get_key_map(cipher_key)
         result = self.text.translate(str.maketrans(key_map))
         return result
 
-    def __get_key_map(self, cipher_key: str) -> dict:
+    @classmethod
+    def get_key_map(cls, cipher_key: List[str]) -> dict:
         key_map = {}
         for pair in cipher_key:
             key_map[pair[0]] = pair[1]
