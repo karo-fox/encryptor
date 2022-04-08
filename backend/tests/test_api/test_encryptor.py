@@ -4,8 +4,18 @@ import pytest
 @pytest.mark.parametrize(
     "cipher_code,msg_text,cipher_params,result",
     [
-        ("switch", "test", {"switch_key": "ga-de-ry-po-lu-ki"}, "tdst"),
-        ("ceasar", "test", {"shift": 1}, "uftu"),
+        (
+            "switch",
+            "test",
+            {"switch_key": "ga-de-ry-po-lu-ki"},
+            "tdst",
+        ),
+        (
+            "ceasar",
+            "test",
+            {"shift": 1},
+            "uftu",
+        ),
     ],
 )
 def test_encryptor(
