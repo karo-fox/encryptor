@@ -3,3 +3,5 @@ nginx.conf
 .pytest_cache
 .mypy_cache
 release.txt
+Dockerfile
+nginx
