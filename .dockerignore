@@ -1,3 +1,5 @@
 .gitignore
 */tests
-*/test
+.vscode
+.pytest_cache
+.mypy_cache

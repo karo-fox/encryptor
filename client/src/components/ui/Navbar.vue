@@ -32,7 +32,7 @@ let showMenu = ref(false);
       </div>
     </div>
     <div class="hidden sm:block p-4">
-      <div class="inline text-lg p-1 px-4">Cipherer</div>
+      <div class="inline text-lg p-1 px-4">Cipherator</div>
       <RouterLink class="p-1 px-4" to="/">Home</RouterLink>
       <RouterLink class="p-1 px-4" to="/about">About</RouterLink>
     </div>
