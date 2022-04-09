@@ -1,6 +1,4 @@
 .vscode
-docker-compose.yml
-*/Dockerfile
 nginx.conf
 .pytest_cache
 .mypy_cache
