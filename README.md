@@ -9,6 +9,13 @@ The app is available [here](https://cipherator.herokuapp.com)
 - Ceasar Cipher
 - Switch Cipher
 
+## running the project on your local machine
+Requirements: docker-compose installed
+
+In the projects directory run `docker-compose up`.
+Then visit `localhost:8000` in your browser.
+Ypu should be able to see the project.
+
 ## Roadmap
 The project is under constant development. In future, I plan to:
 
