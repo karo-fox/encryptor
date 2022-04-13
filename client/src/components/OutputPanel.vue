@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({});
 defineProps<{
   displayText: string;
 }>();
@@ -6,7 +9,7 @@ defineProps<{
 
 <template>
   <div class="p-4">
-    Your results:
+    {{ t("yourResults") }}:
     <div class="py-4">
       <div class="border-solid border-emerald-600 border-2 rounded-md h-60 p-4">
         {{ displayText }}

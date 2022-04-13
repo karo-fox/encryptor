@@ -2,6 +2,9 @@
 import type { EncryptionData } from "@/composables/encrypt";
 import { computed, reactive, watch } from "vue";
 import ParametersPanel from "./ParametersPanel.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({});
 
 const state: EncryptionData = reactive({
   text: "",
@@ -23,34 +26,34 @@ watch(
 );
 
 const ciphers = [
-  { text: "Test Cipher", value: "test", params: null },
   {
-    text: "Ceasar Cipher",
+    text: t("ceasar"),
     value: "ceasar",
     params: [
       {
-        name: "shift",
+        name: t("shift"),
         type: "number",
+        valueName: "shift",
         validate: (val: number | string) => (val == 0 ? "cannot be 0" : ""),
       },
     ],
   },
   {
-    text: "Switch Cipher",
+    text: t("switch"),
     value: "switch",
-    params: [{ name: "switch-key", type: "text" }],
+    params: [{ name: t("switchKey"), type: "text", valueName: "switch-key" }],
   },
 ];
 defineEmits(["encryptClicked"]);
 
-function updateParams(param: { name: string; value: unknown }) {
-  state.params[param.name as keyof Record<string, unknown>] = param.value;
+function updateParams(param: { valueName: string; value: unknown }) {
+  state.params[param.valueName as keyof Record<string, unknown>] = param.value;
 }
 </script>
 
 <template>
   <div class="p-4">
-    <label for="input-area">Your message:</label>
+    <label for="input-area">{{ t("yourMessage") }}:</label>
     <div class="py-4">
       <textarea
         v-model="state.text"
@@ -59,7 +62,7 @@ function updateParams(param: { name: string; value: unknown }) {
         cols="30"
         rows="10"
         class="border-solid border-emerald-600 focus:outline-none focus:border-emerald-500 border-2 rounded-md w-full p-4"
-        placeholder="Type here"
+        :placeholder="`${t('typeHere')}`"
       ></textarea>
     </div>
     <div class="grid grid-cols-4">
@@ -68,7 +71,7 @@ function updateParams(param: { name: string; value: unknown }) {
         name="cipher"
         class="col-span-2 md:col-span-1"
       >
-        <option value disabled selected>Choose the cipher</option>
+        <option value disabled selected>{{ t("chooseCipher") }}:</option>
         <option
           v-for="option in ciphers"
           :value="option.value"
@@ -81,7 +84,7 @@ function updateParams(param: { name: string; value: unknown }) {
         @click="$emit('encryptClicked', state)"
         class="rounded-full text-white bg-emerald-700 px-4 py-1 col-start-4"
       >
-        Encrypt
+        {{ t("encrypt") }}
       </button>
     </div>
     <div v-if="cipherParams">

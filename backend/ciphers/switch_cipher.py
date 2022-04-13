@@ -1,8 +1,8 @@
 from typing import List
-from ciphers.cipher import ICipher
+from ciphers.cipher import Cipher
 
 
-class SwitchCipher(ICipher):
+class SwitchCipher(Cipher):
     def __init__(self, text, cipher_params) -> None:
         super().__init__(text, cipher_params)
         assert "switch_key" in cipher_params.keys(), "'switch_key' not specified"
