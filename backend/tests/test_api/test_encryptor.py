@@ -28,8 +28,6 @@ def test_encryptor(
     }
     response = client.post("/api", json=request_data)
 
-    print(response)
-
     assert response.status_code == 200
     assert response.json["result"] == result
     assert response.json["result"] != msg_text

@@ -1,6 +1,5 @@
 venv
 **/__pycache__
 .vscode
-TODO
 .pytest_cache
 tests/test_sample.py

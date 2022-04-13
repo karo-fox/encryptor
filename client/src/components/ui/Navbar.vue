@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import SelectLanguage from "./SelectLanguage.vue";
+import { useI18n } from "vue-i18n";
+
 let showMenu = ref(false);
+
+const { t } = useI18n({});
 </script>
 
 <template>
@@ -27,14 +32,19 @@ let showMenu = ref(false);
         <div class="text-lg col-span-4">Cipherator</div>
       </div>
       <div v-if="showMenu" class="grid auto-rows-max pl-2">
-        <RouterLink class="row-auto" to="/">Home</RouterLink>
-        <RouterLink class="row-auto" to="/about">About</RouterLink>
+        <RouterLink class="row-auto" to="/">{{ t("home") }}</RouterLink>
+        <RouterLink class="row-auto" to="/about">{{ t("ciphers") }}</RouterLink>
       </div>
     </div>
-    <div class="hidden sm:block p-4">
-      <div class="inline text-lg p-1 px-4">Cipherator</div>
-      <RouterLink class="p-1 px-4" to="/">Home</RouterLink>
-      <RouterLink class="p-1 px-4" to="/about">About</RouterLink>
+    <div class="hidden p-4 sm:grid grid-cols-5">
+      <div class="col-span-4">
+        <div class="inline text-lg p-1 px-4">Cipherator</div>
+        <RouterLink class="p-1 px-4" to="/">{{ t("home") }}</RouterLink>
+        <RouterLink class="p-1 px-4" to="/about">{{ t("ciphers") }}</RouterLink>
+      </div>
+      <div>
+        <SelectLanguage />
+      </div>
     </div>
   </nav>
 </template>
