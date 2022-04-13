@@ -1,7 +1,7 @@
-from ciphers.cipher import ICipher
+from ciphers.cipher import Cipher
 
 
-class CeasarCipher(ICipher):
+class CeasarCipher(Cipher):
     SPACE_CODE = 32
     A_CODE = 65
     a_CODE = 97

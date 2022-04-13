@@ -1,6 +1,6 @@
 from spwd import getspnam
 from flask import Blueprint, request, jsonify, json
-from ciphers.cipher import ICipher
+from ciphers.cipher import Cipher
 from ciphers.switch_cipher import SwitchCipher
 from ciphers.ceasar_cipher import CeasarCipher
 from ciphers.cipher_context import CipherContext
@@ -20,7 +20,7 @@ def main():
             return jsonify(exception=f"bad data: {error.args.__str__()}")
 
 
-def get_cipher(cipher_data: dict) -> ICipher:
+def get_cipher(cipher_data: dict) -> Cipher:
     return available_ciphers()[cipher_data["cipher"]](
         cipher_data["text"], getSnakeCaseKeys(cipher_data["params"])
     )

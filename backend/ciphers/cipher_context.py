@@ -1,17 +1,17 @@
 from __future__ import annotations
-from ciphers.cipher import ICipher
+from ciphers.cipher import Cipher
 
 
 class CipherContext:
-    def __init__(self, cipher: ICipher) -> None:
+    def __init__(self, cipher: Cipher) -> None:
         self._cipher = cipher
 
     @property
-    def cipher(self) -> ICipher:
+    def cipher(self) -> Cipher:
         return self._cipher
 
     @cipher.setter
-    def cipher(self, cipher: ICipher) -> None:
+    def cipher(self, cipher: Cipher) -> None:
         self._cipher = cipher
 
     def encrypt(self) -> str:
