@@ -1,6 +1,5 @@
 venv
 **/__pycache__
-**/config.py
 .vscode
 .pytest_cache
 tests/test_sample.py
