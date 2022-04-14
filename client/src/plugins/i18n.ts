@@ -13,6 +13,8 @@ const messages = {
     yourResults: "Your results",
     home: "Home",
     ciphers: "Ciphers",
+    placeholder:
+      "I am currently working on this feature, it will be available soon!",
   },
   pl: {
     ceasar: "Szyfr Cezara",
@@ -26,6 +28,7 @@ const messages = {
     yourResults: "Twój wynik",
     home: "Strona Główna",
     ciphers: "Szyfry",
+    placeholder: "Obecnie pracuję nad tą funkcją, już wkrótce będzie dostępna!",
   },
 };
 
