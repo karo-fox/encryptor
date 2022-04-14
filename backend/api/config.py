@@ -1,6 +1,6 @@
-class ProductionConfig():
+class ProductionConfig:
     DEBUG = False
 
 
-class DevelopmentConfig():
+class DevelopmentConfig:
     DEBUG = True

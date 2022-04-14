@@ -1,0 +1,39 @@
+{
+  "ciphers": {
+    "ceasar": {
+      "name": "Szyfr Cezara",
+      "description": "Żeby zaszyfrować wiadomość należy utworzyć nowy alfabet. Zmieniamy pozycję każdej litery o kilka miejsc, których liczbę można określić parametrem `przesunięcie`. Następnie zastępujemy każdą literę odpowiadającą jej literą z nowego alfabetu.",
+      "params": {
+        "shift": {
+          "name": "przesunięcie",
+          "description": "Określa ilość miejsc, o które zostaną przesunięte litery."
+        }
+      }
+    },    
+    "switch": {
+      "name": "Zamiana",
+      "description": "Żeby zaszyfrować wiadomość wymagany jest `klucz zamiany`. Klucz składa się z par liter. Szyfrowanie polega na zamianie każdej litery na literę, która jest z nią w parze. Gdy litery nie ma w kluczu, jest pozostawiona bez zmian.",
+      "params": {
+        "switchKey": {
+          "name": "klucz zamiany",
+          "description": "Określa pary liter. Nie może zawierać powtarzających się liter. Pary muszą być rozdzielone znakiem '-'. Przykładowy klucz: ga-de-ry-po-lu-ki."
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": "Strona Główna",
+    "ciphers": "Szyfry"
+  },
+  "homeView": {
+    "yourMessage": "Twoja wiadomość",
+    "chooseCipher": "Wybierz szyfr",
+    "typeHere": "Pisz tutaj",
+    "encrypt": "Szyfruj",
+    "yourResults": "Twój wynik"
+  },
+  "ciphersView": {
+    "availableCiphers": "Dostępne szyfry",
+    "parameters": "Parametry"
+  }
+}
