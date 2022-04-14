@@ -20,6 +20,12 @@ const router = createRouter({
       component: () =>
         import("../views/cipher_descriptions/CeasarDescriptionView.vue"),
     },
+    {
+      path: "/ciphers/switch",
+      name: "switch",
+      component: () =>
+        import("../views/cipher_descriptions/SwitchCipherDescription.vue"),
+    },
   ],
 });
 

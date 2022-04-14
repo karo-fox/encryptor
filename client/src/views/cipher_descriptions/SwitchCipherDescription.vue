@@ -5,20 +5,20 @@ import CipherDescription from "@/components/CipherDescription.vue";
 import { useMarkText } from "@/composables/markText";
 
 const { t } = useI18n({});
-const parameters = ["shift"];
+const parameters = ["switchKey"];
 </script>
 
 <template>
-  <CipherDescription cipher-name="ceasar">
-    <div v-html="useMarkText(t('ciphers.ceasar.description'))"></div>
+  <CipherDescription cipher-name="switch">
+    <div v-html="useMarkText(t('ciphers.switch.description'))"></div>
     <template #params-description>
       <div v-for="param in parameters" :key="param">
         <p>
           <span class="inline text-emerald-700 text-lg">{{
-            capitalize(t(`ciphers.ceasar.params.${param}.name`))
+            capitalize(t(`ciphers.switch.params.${param}.name`))
           }}</span
           >:
-          {{ t(`ciphers.ceasar.params.${param}.description`) }}
+          {{ t(`ciphers.switch.params.${param}.description`) }}
         </p>
       </div>
     </template>
