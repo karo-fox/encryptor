@@ -27,11 +27,11 @@ watch(
 
 const ciphers = [
   {
-    text: t("ceasar"),
+    text: t("ciphers.ceasar.name"),
     value: "ceasar",
     params: [
       {
-        name: t("shift"),
+        name: t("ciphers.ceasar.shift"),
         type: "number",
         valueName: "shift",
         validate: (val: number | string) => (val == 0 ? "cannot be 0" : ""),
@@ -39,9 +39,15 @@ const ciphers = [
     ],
   },
   {
-    text: t("switch"),
+    text: t("ciphers.switch.name"),
     value: "switch",
-    params: [{ name: t("switchKey"), type: "text", valueName: "switch-key" }],
+    params: [
+      {
+        name: t("ciphers.switch.switchKey"),
+        type: "text",
+        valueName: "switch-key",
+      },
+    ],
   },
 ];
 defineEmits(["encryptClicked"]);
@@ -53,7 +59,9 @@ function updateParams(param: { valueName: string; value: unknown }) {
 
 <template>
   <div class="p-4">
-    <label for="input-area">{{ t("yourMessage") }}:</label>
+    <label for="input-area" class="text-xl"
+      >{{ t("homeView.yourMessage") }}:</label
+    >
     <div class="py-4">
       <textarea
         v-model="state.text"
@@ -62,7 +70,7 @@ function updateParams(param: { valueName: string; value: unknown }) {
         cols="30"
         rows="10"
         class="border-solid border-emerald-600 focus:outline-none focus:border-emerald-500 border-2 rounded-md w-full p-4"
-        :placeholder="`${t('typeHere')}`"
+        :placeholder="`${t('homeView.typeHere')}`"
       ></textarea>
     </div>
     <div class="grid grid-cols-4">
@@ -71,7 +79,9 @@ function updateParams(param: { valueName: string; value: unknown }) {
         name="cipher"
         class="col-span-2 md:col-span-1"
       >
-        <option value disabled selected>{{ t("chooseCipher") }}:</option>
+        <option value disabled selected>
+          {{ t("homeView.chooseCipher") }}:
+        </option>
         <option
           v-for="option in ciphers"
           :value="option.value"
@@ -84,7 +94,7 @@ function updateParams(param: { valueName: string; value: unknown }) {
         @click="$emit('encryptClicked', state)"
         class="rounded-full text-white bg-emerald-700 px-4 py-1 col-start-4"
       >
-        {{ t("encrypt") }}
+        {{ t("homeView.encrypt") }}
       </button>
     </div>
     <div v-if="cipherParams">

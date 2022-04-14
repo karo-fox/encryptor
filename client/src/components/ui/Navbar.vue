@@ -31,16 +31,25 @@ const { t } = useI18n({});
         </button>
         <div class="text-lg col-span-4">Cipherator</div>
       </div>
-      <div v-if="showMenu" class="grid auto-rows-max pl-2">
-        <RouterLink class="row-auto" to="/">{{ t("home") }}</RouterLink>
-        <RouterLink class="row-auto" to="/about">{{ t("ciphers") }}</RouterLink>
+      <div v-if="showMenu" class="grid auto-rows-max pl-2 py-2">
+        <RouterLink class="row-auto py-2" to="/">{{
+          t("nav.home")
+        }}</RouterLink>
+        <RouterLink class="row-auto py-2" to="/about">{{
+          t("nav.ciphers")
+        }}</RouterLink>
+        <div class="py-2">
+          <SelectLanguage />
+        </div>
       </div>
     </div>
     <div class="hidden p-4 sm:grid grid-cols-5">
       <div class="col-span-4">
         <div class="inline text-lg p-1 px-4">Cipherator</div>
-        <RouterLink class="p-1 px-4" to="/">{{ t("home") }}</RouterLink>
-        <RouterLink class="p-1 px-4" to="/about">{{ t("ciphers") }}</RouterLink>
+        <RouterLink class="p-1 px-4" to="/">{{ t("nav.home") }}</RouterLink>
+        <RouterLink class="p-1 px-4" to="/ciphers">{{
+          t("nav.ciphers")
+        }}</RouterLink>
       </div>
       <div>
         <SelectLanguage />
