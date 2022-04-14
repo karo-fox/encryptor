@@ -22,7 +22,6 @@ You should be able to see the project.
 ## Roadmap
 The project is under constant development. In future, I plan to:
 
-- add ciphers descriptions and informations about how they work
 - implement decrypting mechanism
 - add more ciphers
 
