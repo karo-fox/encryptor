@@ -27,11 +27,9 @@ watch(
 
 const ciphers = [
   {
-    text: t("ciphers.ceasar.name"),
     value: "ceasar",
     params: [
       {
-        name: t("ciphers.ceasar.shift"),
         type: "number",
         valueName: "shift",
         validate: (val: number | string) => (val == 0 ? "cannot be 0" : ""),
@@ -39,11 +37,9 @@ const ciphers = [
     ],
   },
   {
-    text: t("ciphers.switch.name"),
     value: "switch",
     params: [
       {
-        name: t("ciphers.switch.switchKey"),
         type: "text",
         valueName: "switch-key",
       },
@@ -87,7 +83,7 @@ function updateParams(param: { valueName: string; value: unknown }) {
           :value="option.value"
           :key="`${option.value}-key`"
         >
-          {{ option.text }}
+          {{ t(`ciphers.${option.value}.name`) }}
         </option>
       </select>
       <button
@@ -98,7 +94,11 @@ function updateParams(param: { valueName: string; value: unknown }) {
       </button>
     </div>
     <div v-if="cipherParams">
-      <ParametersPanel :params="cipherParams" @update-params="updateParams" />
+      <ParametersPanel
+        :cipher="state.cipher"
+        :params="cipherParams"
+        @update-params="updateParams"
+      />
     </div>
   </div>
 </template>
