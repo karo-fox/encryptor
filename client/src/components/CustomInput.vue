@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { capitalize, computed, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+
+import { useToNameTag } from "@/composables/naming";
+
+const { t } = useI18n({});
 
 const props = defineProps<{
-  inputName: string;
+  cipher: string;
+  valueName: string;
   type: string;
   modelValue: unknown;
   validate?: (val: string | number) => string;
@@ -11,7 +17,6 @@ const props = defineProps<{
 const emit = defineEmits(["update:modelValue"]);
 
 const errorMsg = ref("");
-const label = computed(() => capitalize(props.inputName) + ":");
 
 const value = computed({
   get() {
@@ -31,11 +36,17 @@ watch(value, (newValue) => {
 
 <template>
   <div class="grid grid-cols-3">
-    <label :for="`${inputName}-id`" class="p-1 mr-4">{{ label }}</label>
+    <label :for="`${valueName}-id`" class="p-1 mr-4"
+      >{{
+        capitalize(
+          t(`ciphers.${cipher}.params.${useToNameTag(valueName)}.name`)
+        )
+      }}:</label
+    >
     <input
       :type="type"
-      :id="`${inputName}-id`"
-      :name="inputName"
+      :id="`${valueName}-id`"
+      :name="valueName"
       v-model="value"
       class="p-1 border-solid border-2 border-emerald-600 rounded-md"
     />

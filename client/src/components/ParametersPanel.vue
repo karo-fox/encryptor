@@ -3,8 +3,8 @@ import { reactive } from "vue";
 import CustomInput from "./CustomInput.vue";
 
 const props = defineProps<{
+  cipher: string;
   params: {
-    name: string;
     type: string;
     valueName: string;
     validate?: (val: string | number) => string;
@@ -33,10 +33,10 @@ const paramValues = reactive(combineArrays(keys, values));
 <template>
   <div class="pt-4" v-for="param in params" :key="`${param.valueName}-key`">
     <CustomInput
-      :input-name="param.name"
+      :value-name="param.valueName"
       :type="param.type"
+      :cipher="cipher"
       v-model="paramValues[param.valueName]"
-      :key="`${param.valueName}-key`"
       @update:model-value="
         $emit('updateParams', { valueName: param.valueName, value: $event })
       "
