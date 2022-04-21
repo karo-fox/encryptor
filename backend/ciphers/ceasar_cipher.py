@@ -15,7 +15,7 @@ class CeasarCipher(Cipher):
         self.shift = self.params["shift"]
 
     def __get_alphabet(self) -> str:
-        if "alphabet" in self.params:
+        if "alphabet" in self.params and self.params["alphabet"]:
             return self.ALPHABETS[self.params["alphabet"]]
         return self.ALPHABETS["en"]
 

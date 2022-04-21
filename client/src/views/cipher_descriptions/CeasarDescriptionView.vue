@@ -5,7 +5,7 @@ import CipherDescription from "@/components/CipherDescription.vue";
 import { useMarkText } from "@/composables/markText";
 
 const { t } = useI18n({});
-const parameters = ["shift"];
+const parameters = ["shift", "alphabet"];
 </script>
 
 <template>

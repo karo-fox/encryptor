@@ -7,6 +7,10 @@
         "shift": {
           "name": "przesunięcie",
           "description": "Określa ilość miejsc, o które zostaną przesunięte litery."
+        },
+        "alphabet": {
+          "name": "alfabet",
+          "description": "Określa jakiego alfabetu użyć jako podstawy. Domyślny alfabet to angielski. Opcje: pl - polski, en - angielski."
         }
       }
     },    

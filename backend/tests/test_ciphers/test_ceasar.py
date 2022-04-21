@@ -9,7 +9,7 @@ def test_init_with_shift_provided() -> None:
     msg = "test"
     cipher = CeasarCipher(msg, params)
 
-    assert type(cipher) == CeasarCipher
+    assert cipher.shift == 1
 
 
 def test_init_without_shift_provided() -> None:
@@ -20,6 +20,22 @@ def test_init_without_shift_provided() -> None:
         ] = {}
         msg = "test"
         CeasarCipher(msg, params)
+
+
+def test_init_with_alphabet_provided() -> None:
+    params = {"shift": 1, "alphabet": "pl"}
+    msg = "test"
+    cipher = CeasarCipher(msg, params)
+
+    assert cipher.alphabet == "aąbcćdeęfghijklłmnńoóprsśtuwyzźż"
+
+
+def test_init_without_alphabet_provided() -> None:
+    params = {"shift": 1}
+    msg = "test"
+    cipher = CeasarCipher(msg, params)
+
+    assert cipher.alphabet == "abcdefghijklmnopqrstuvwxyz"
 
 
 @pytest.mark.parametrize(
