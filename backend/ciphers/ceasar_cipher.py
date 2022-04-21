@@ -2,65 +2,39 @@ from ciphers.cipher import Cipher
 
 
 class CeasarCipher(Cipher):
-    SPACE_CODE = 32
-    A_CODE = 65
-    a_CODE = 97
-    Z_CODE = 90
-    z_CODE = 122
+    ALPHABETS = {
+        "en": "abcdefghijklmnopqrstuvwxyz",
+        "pl": "aąbcćdeęfghijklłmnńoóprsśtuwyzźż",
+    }
+    EXCLUDED = " "
 
     def __init__(self, text, cipher_params) -> None:
         super().__init__(text, cipher_params)
         assert "shift" in cipher_params.keys(), "'shift' not specified"
+        self.alphabet = self.__get_alphabet()
+        self.shift = self.params["shift"]
+
+    def __get_alphabet(self) -> str:
+        if "alphabet" in self.params:
+            return self.ALPHABETS[self.params["alphabet"]]
+        return self.ALPHABETS["en"]
 
     def encrypt(self) -> str:
-        shift = self.params["shift"]
         result = ""
         for char in self.text:
-            char_code = ord(char)
-            encrypted_char_code = self.get_encrypted_char_code(char_code, shift)
-            result += chr(encrypted_char_code)
+            result += self.__get_encrypted_char(char)
         return result
 
-    @classmethod
-    def get_encrypted_char_code(cls, char_code: int, shift: int) -> int:
-        if char_code in [cls.SPACE_CODE]:
-            encrypted_char_code = char_code
+    def __get_encrypted_char(self, char: str) -> str:
+        if char in self.EXCLUDED:
+            return char
         else:
-            if char_code in cls.get_letters_minus_shift(
-                shift, capital=True
-            ) + cls.get_letters_minus_shift(shift, capital=False):
-                encrypted_char_code = char_code + shift
+            end_index = len(self.alphabet) - self.shift - 1
+            alphabet = self.alphabet.upper() if char.isupper() else self.alphabet
+            char_index = alphabet.find(char)
+            reverse_letters = self.alphabet[end_index:]
+            if char in reverse_letters:
+                reverse_index = char_index - len(alphabet) + self.shift
+                return alphabet[reverse_index]
             else:
-                if char_code not in cls.get_letters_minus_shift(shift, capital=True):
-                    encrypted_char_code = char_code + cls.get_reverse_shift(
-                        shift, capital=True
-                    )
-                elif char_code not in cls.get_letters_minus_shift(shift, capital=False):
-                    encrypted_char_code = char_code + cls.get_reverse_shift(
-                        shift, capital=False
-                    )
-        return encrypted_char_code
-
-    @classmethod
-    def get_reverse_shift(cls, shift: int, capital: bool) -> int:
-        if capital:
-            a_code = cls.A_CODE
-        else:
-            a_code = cls.a_CODE
-        return a_code - cls.get_ending_code(shift, capital)
-
-    @classmethod
-    def get_letters_minus_shift(cls, shift: int, capital: bool) -> list:
-        if capital:
-            a_code = cls.A_CODE
-        else:
-            a_code = cls.a_CODE
-        return list(range(a_code, cls.get_ending_code(shift, capital)))
-
-    @classmethod
-    def get_ending_code(cls, shift: int, capital: bool) -> int:
-        if capital:
-            z_code = cls.Z_CODE
-        else:
-            z_code = cls.z_CODE
-        return z_code - shift + 1
+                return alphabet[char_index + self.shift]
