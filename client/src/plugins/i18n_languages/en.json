@@ -7,6 +7,10 @@
         "shift": {
           "name": "shift",
           "description": "Specifies the number of positions by which the letters will be shifted."
+        },
+        "alphabet": {
+          "name": "alphabet",
+          "description": "Specifies which alphabet to use as a base. Default is English. Options: pl - Polish, en - English"
         }
       }
     },
