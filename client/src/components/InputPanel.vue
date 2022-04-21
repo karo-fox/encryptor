@@ -34,6 +34,10 @@ const ciphers = [
         valueName: "shift",
         validate: (val: number | string) => (val == 0 ? "cannot be 0" : ""),
       },
+      {
+        type: "text",
+        valueName: "alphabet",
+      },
     ],
   },
   {
