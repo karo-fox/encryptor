@@ -1,8 +1,15 @@
 <script setup lang="ts">
-import type { EncryptionData } from "@/composables/encrypt";
 import { computed, reactive, watch } from "vue";
-import ParametersPanel from "./ParametersPanel.vue";
 import { useI18n } from "vue-i18n";
+
+import type { EncryptionData } from "@/composables/encrypt";
+import {
+  validateShift,
+  validateSwitchKey,
+  validateAlphabet,
+} from "@/composables/validators";
+
+import ParametersPanel from "./ParametersPanel.vue";
 
 const { t } = useI18n({});
 
@@ -32,11 +39,12 @@ const ciphers = [
       {
         type: "number",
         valueName: "shift",
-        validate: (val: number | string) => (val == 0 ? "cannot be 0" : ""),
+        validate: validateShift,
       },
       {
         type: "text",
         valueName: "alphabet",
+        validate: validateAlphabet,
       },
     ],
   },
@@ -46,6 +54,7 @@ const ciphers = [
       {
         type: "text",
         valueName: "switch-key",
+        validate: validateSwitchKey,
       },
     ],
   },
