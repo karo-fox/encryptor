@@ -8,6 +8,7 @@
       "@/*": ["./src/*"]
     },
     "jsx": "preserve",
-    "resolveJsonModule": true,
+    "module": "es2020",
+    "moduleResolution": "node"
   }
 }
