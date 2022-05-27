@@ -1,10 +1,9 @@
 import { fileURLToPath, URL } from "url";
-
-import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-
-// https://vitejs.dev/config/
-export default defineConfig({
+/**
+ * @type {import('vitest').UserConfig}
+ */
+const config = {
   plugins: [vue()],
   resolve: {
     alias: {
@@ -14,4 +13,9 @@ export default defineConfig({
   server: {
     host: true,
   },
-});
+  test: {
+    environment: "jsdom",
+  },
+};
+
+export default config;

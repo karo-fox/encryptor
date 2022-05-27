@@ -24,7 +24,7 @@ const router = createRouter({
       path: "/ciphers/switch",
       name: "switch",
       component: () =>
-        import("../views/cipher_descriptions/SwitchCipherDescription.vue"),
+        import("../views/cipher_descriptions/SwitchDescriptionView.vue"),
     },
   ],
 });
