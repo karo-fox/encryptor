@@ -18,4 +18,4 @@ coverage
 !.vscode/extensions.json
 .eslintrc.cjs
 
-*/sample.test.ts
+tests
