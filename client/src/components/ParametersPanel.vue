@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { combineArrays } from "@/composables/utils";
 import { reactive } from "vue";
 import CustomInput from "./CustomInput.vue";
 
@@ -17,15 +18,6 @@ defineEmits<{
 
 const keys = props.params.map((p) => p.valueName);
 const values = props.params.map((p) => (p.type == "number" ? 0 : ""));
-const combineArrays = (first: string[], second: (0 | "")[]) => {
-  return first.reduce(
-    (acc: { [x: string]: unknown }, val: string | number, ind: number) => {
-      acc[val] = second[ind];
-      return acc;
-    },
-    {}
-  );
-};
 
 const paramValues = reactive(combineArrays(keys, values));
 </script>

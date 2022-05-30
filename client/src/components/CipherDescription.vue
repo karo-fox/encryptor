@@ -15,6 +15,6 @@ const { t } = useI18n({});
   </div>
   <p class="text-2xl">{{ t("ciphersView.parameters") }}</p>
   <div class="py-4">
-    <slot name="params-description"></slot>
+    <slot name="paramsDescription"></slot>
   </div>
 </template>
