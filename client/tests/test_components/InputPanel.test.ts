@@ -16,7 +16,7 @@ test("emits encryptClicked on click", async () => {
 
 describe("parameters panel rendering", () => {
   test("renders ceasar params", async () => {
-    const { getAllByRole, getAllByText } = render(InputPanel, {
+    const { getAllByRole } = render(InputPanel, {
       global: { plugins: [i18n] },
     });
     const selectCipher = getAllByRole("combobox"); //FIXME: Why does it render twice?
