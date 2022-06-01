@@ -9,7 +9,7 @@ const { getByText } = render(CipherDescription, {
   props: { cipherName: "test" },
   slots: {
     default: "test default",
-    paramsDescription: "test params-description",
+    params: "test params-description",
   },
 });
 

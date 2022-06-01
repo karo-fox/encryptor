@@ -11,7 +11,7 @@ const parameters = ["shift", "alphabet"];
 <template>
   <CipherDescription cipher-name="ceasar">
     <div v-html="useMarkText(t('ciphers.ceasar.description'))"></div>
-    <template #params-description>
+    <template #params>
       <div v-for="param in parameters" :key="param">
         <p>
           <span class="inline text-emerald-700 text-lg">{{

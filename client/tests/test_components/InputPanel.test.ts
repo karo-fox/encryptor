@@ -4,7 +4,7 @@ import InputPanel from "@/components/InputPanel.vue";
 import { fireEvent, render } from "@testing-library/vue";
 import { i18n } from "@/plugins/i18n";
 
-const { getByRole, emitted } = render(InputPanel, {
+const { getByText, getByRole, emitted } = render(InputPanel, {
   global: { plugins: [i18n] },
 });
 
@@ -14,8 +14,17 @@ test("emits encryptClicked on click", async () => {
   expect(emitted()).toHaveProperty("encryptClicked");
 });
 
-describe.todo("parameters panel rendering", () => {
+describe("parameters panel rendering", () => {
+  const selectNode = getByRole("combobox");
+
   test("renders ceasar params", async () => {
-    null;
+    await fireEvent.update(selectNode, "ceasar");
+    getByText("Shift:");
+    getByText("Alphabet:");
+  });
+
+  test("renders switch params", async () => {
+    await fireEvent.update(selectNode, "switch");
+    getByText("Switch key:");
   });
 });

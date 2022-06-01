@@ -11,7 +11,7 @@ const parameters = ["switchKey"];
 <template>
   <CipherDescription cipher-name="switch">
     <div v-html="useMarkText(t('ciphers.switch.description'))"></div>
-    <template #params-description>
+    <template #params>
       <div v-for="param in parameters" :key="param">
         <p>
           <span class="inline text-emerald-700 text-lg">{{
