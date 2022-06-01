@@ -8,13 +8,19 @@ import { config } from "@vue/test-utils";
 config.global.mocks = {
   $t: (text) => text,
 };
+const testValidate = (val: string | number) => val;
+const { getByText, getByLabelText, emitted } = render(CustomInput, {
+  global: { plugins: [i18n] },
+  props: {
+    cipher: "test",
+    valueName: "test",
+    type: "text",
+    modelValue: "",
+    validate: testValidate,
+  },
+});
 
 test("renders properly with provided props", () => {
-  const { getByText, getByLabelText } = render(CustomInput, {
-    global: { plugins: [i18n] },
-    props: { cipher: "test", valueName: "test", type: "text", modelValue: "" },
-  });
-
   getByText("Ciphers.test.params.test.name:");
   const inputNode = getByLabelText("Ciphers.test.params.test.name:");
   expect(inputNode.nodeValue).toBe(null);
@@ -38,17 +44,6 @@ test("renders properly with provided props", () => {
 // FIXME: I don't really know if I should assert input value in this place
 
 test("shows validation errors", async () => {
-  const testValidate = (val: string | number) => val;
-  const { getByText, getByLabelText } = render(CustomInput, {
-    global: { plugins: [i18n] },
-    props: {
-      cipher: "test",
-      valueName: "test",
-      type: "text",
-      modelValue: "",
-      validate: testValidate,
-    },
-  });
   const inputNode = getByLabelText("Ciphers.test.params.test.name:");
 
   await fireEvent.update(inputNode, "test invalid value");
@@ -57,15 +52,6 @@ test("shows validation errors", async () => {
 // TODO: Should pass, I believe, but i don't know if its tests
 
 test("emits update event on input", async () => {
-  const { getByLabelText, emitted } = render(CustomInput, {
-    global: { plugins: [i18n] },
-    props: {
-      cipher: "test",
-      valueName: "test",
-      type: "text",
-      modelValue: "",
-    },
-  });
   const inputNode = getByLabelText("Ciphers.test.params.test.name:");
   await fireEvent.update(inputNode, "new value");
   expect(emitted()).toHaveProperty("update:modelValue");
