@@ -1,15 +1,23 @@
-import { test } from "vitest";
-import { render } from "@testing-library/vue";
+import { expect, test, describe } from "vitest";
+import { render, fireEvent } from "@testing-library/vue";
 
 import App from "@/App.vue";
 import { i18n } from "@/plugins/i18n";
 import router from "@/router";
 
-const { getByRole } = render(App, {
+const { getByText, getByRole } = render(App, {
   global: { plugins: [i18n, router] },
 });
 
-test.todo("full app navigation", () => {
-  getByRole("router-view");
+router.push("/");
+await router.isReady();
+
+describe("full app navigation", () => {
+  test("defaults to home view", () => {
+    getByText("Your message:");
+  });
+
+  test.todo("routes to ciphers view on '/ciphers'", async () => {
+    null;
+  });
 });
-// TODO: Ypu have to find a way to test this properly
