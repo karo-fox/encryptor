@@ -2,10 +2,8 @@
   "extends": "./tsconfig.app.json",
   "exclude": [],
   "compilerOptions": {
-    "module": "es2022",
-    "target": "es2020",
     "composite": true,
     "lib": [],
     "types": ["node", "jsdom"]
-  },
+  }
 }

@@ -1,9 +1,0 @@
-{
-  "include": ["vite.config.*"],
-  "compilerOptions": {
-    "composite": true,
-    "types": ["node", "vitest"],
-    "module": "es2020",
-    "moduleResolution": "node"
-  }
-}
