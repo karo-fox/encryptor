@@ -1,15 +1,13 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect } from "vitest";
 
 import { mount } from "@vue/test-utils";
 import CopiableBlock from "../CopiableBlock.vue";
-import { createPinia, setActivePinia } from "pinia";
 
 describe("Copiable Block", () => {
-  beforeEach(() => {
-    setActivePinia(createPinia());
-  }),
-    it("renders properly", () => {
-      const wrapper = mount(CopiableBlock);
-      expect(wrapper.text()).toContain("Your result ...");
+  it("renders properly", () => {
+    const wrapper = mount(CopiableBlock, {
+      props: { result: "Your result ..." },
     });
+    expect(wrapper.text()).toContain("Your result ...");
+  });
 });
