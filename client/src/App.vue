@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { useToggleDarkMode } from "./composables/toggleDarkMode";
-import IconGithub from "./components/icons/IconGithub.vue";
 import IconQuestion from "./components/icons/IconQuestion.vue";
 import CopiableBlock from "./components/CopiableBlock.vue";
-import DarkModeToggle from "./components/DarkModeToggle.vue";
+import AppHeader from "./components/AppHeader.vue";
 
 useToggleDarkMode();
 </script>
@@ -17,17 +16,7 @@ useToggleDarkMode();
     >
       <div class="py-6 mx-4 xl:mx-auto xl:px-4 xl:max-w-7xl">
         <div class="relative flex items-center">
-          <span class="mr-2 text-2xl">Cipherator</span>
-          <div class="ml-auto">
-            <DarkModeToggle />
-          </div>
-          <div class="ml-8">
-            <a href="#">
-              <button>
-                <IconGithub class="h-4" />
-              </button>
-            </a>
-          </div>
+          <AppHeader />
         </div>
       </div>
     </header>
