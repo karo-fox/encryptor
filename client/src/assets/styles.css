@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+@layer component {
+  .panel {
+    @apply border border-solid border-2 bg-slate-900
+  }
+
+  .btn {
+    @apply rounded-md bg-slate-900 text-slate-50 dark:bg-slate-50 dark:text-slate-900
+  }
+} */

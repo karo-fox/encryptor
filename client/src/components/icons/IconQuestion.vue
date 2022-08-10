@@ -4,7 +4,7 @@
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-question-circle-fill"
+    class="bi bi-question-circle-fill h-5"
     viewBox="0 0 16 16"
   >
     <path

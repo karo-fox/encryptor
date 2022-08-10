@@ -9,3 +9,7 @@ export function useToggleDarkMode() {
     document.documentElement.classList.remove("dark");
   }
 }
+
+export function checkDarkMode() {
+  return document.documentElement.classList.contains("dark");
+}

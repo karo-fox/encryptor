@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watchEffect } from "vue";
 import IconSun from "./icons/IconSun.vue";
 import IconMoon from "./icons/IconMoon.vue";
-import { useToggleDarkMode } from "@/composables/toggleDarkMode";
+import { checkDarkMode, useToggleDarkMode } from "@/composables/toggleDarkMode";
 
-const isDarkMode = ref(true);
-const chosen = "text-slate-300";
-const disabled = "text-slate-700";
+const isDarkMode = ref(checkDarkMode());
+const chosen = "text-slate-900";
+const disabled = "text-slate-400";
 const light = ref(chosen);
 const dark = ref(disabled);
 
-watch(isDarkMode, async () => {
+watchEffect(async () => {
   if (isDarkMode.value) {
     localStorage.theme = "dark";
     light.value = disabled;
@@ -26,10 +26,10 @@ watch(isDarkMode, async () => {
 </script>
 
 <template>
-  <button class="inline m-2" @click="isDarkMode = false">
+  <button class="inline" @click="isDarkMode = false">
     <IconSun :class="light" />
   </button>
-  <button class="inline m-2" @click="isDarkMode = true">
+  <button class="inline ml-2" @click="isDarkMode = true">
     <IconMoon :class="dark" />
   </button>
 </template>

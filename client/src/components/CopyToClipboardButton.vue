@@ -6,8 +6,8 @@ import IconCopy from "./icons/IconCopy.vue";
   <button
     @click="$emit('copy')"
     type="button"
-    class="bg-slate-200 p-2 hover:bg-gray-400 rounded-md"
+    class="bg-slate-200 p-2 hover:bg-gray-400 rounded-md text-slate-900"
   >
-    <IconCopy class="text-slate-800" />
+    <IconCopy class="" />
   </button>
 </template>
