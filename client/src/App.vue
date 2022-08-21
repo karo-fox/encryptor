@@ -3,6 +3,7 @@ import { useToggleDarkMode } from "./composables/toggleDarkMode";
 import IconQuestion from "./components/icons/IconQuestion.vue";
 import CopiableBlock from "./components/CopiableBlock.vue";
 import AppHeader from "./components/AppHeader.vue";
+import ActionSwitch from "./components/ActionSwitch.vue";
 
 useToggleDarkMode();
 </script>
@@ -25,18 +26,7 @@ useToggleDarkMode();
         <main class="mt-16">
           <form action="post">
             <div class="flex justify-center py-4 mb-4">
-              <input
-                name="action"
-                type="button"
-                value="encrypt"
-                class="py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md bg-slate-900 text-slate-50 dark:bg-slate-300 dark:text-slate-900"
-              />
-              <input
-                name="action"
-                type="button"
-                value="decrypt"
-                class="ml-4 sm:ml-16 lg:ml-32 py-4 px-4 sm:px-16 lg:px-32 text-lg rounded-md bg-slate-900 text-slate-50 dark:bg-slate-300 dark:text-slate-900"
-              />
+              <ActionSwitch />
             </div>
             <div class="flex justify-center items-center py-4">
               <select
