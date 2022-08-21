@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useToggleDarkMode } from "./composables/toggleDarkMode";
-import IconQuestion from "./components/icons/IconQuestion.vue";
 import CopiableBlock from "./components/CopiableBlock.vue";
 import AppHeader from "./components/AppHeader.vue";
 import ActionSwitch from "./components/ActionSwitch.vue";
+import InfoLink from "./components/InfoLink.vue";
 
 useToggleDarkMode();
 </script>
@@ -36,7 +36,7 @@ useToggleDarkMode();
                 <option value="ceasar">Ceasar's</option>
                 <option value="switch">Switch</option>
               </select>
-              <a href="#info-ceasar" class="ml-4"><IconQuestion /></a>
+              <InfoLink link-to="info-ceasar" />
             </div>
             <div class="grid md:grid-cols-3">
               <div class="py-4 md:col-span-2">
@@ -44,7 +44,7 @@ useToggleDarkMode();
                   <textarea
                     name="message"
                     id="message"
-                    class="w-full min-h-[24rem] p-8 bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-slate-50 border border-solid border-2 rounded-md"
+                    class="w-full min-h-[24rem] p-8 bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-slate-50 border-solid border-2 rounded-md"
                   >
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod illum aliquam temporibus corrupti eos provident dignissimos consequuntur repellat, necessitatibus facere error natus cum molestiae molestias ad odio totam quae vitae.
                   </textarea>
@@ -54,7 +54,7 @@ useToggleDarkMode();
                 <div id="props" class="py-4 flex flex-col">
                   <div class="py-4 flex items-center ml-16 md:ml-0">
                     <label for="shift" class="text-lg">Shift</label>
-                    <a href="#info-shift" class="ml-4"><IconQuestion /></a>
+                    <InfoLink link-to="info-shift" />
                   </div>
                   <input
                     type="range"
@@ -64,7 +64,7 @@ useToggleDarkMode();
                   />
                   <div class="py-4 flex items-center ml-16 md:ml-0">
                     <label for="alphabet" class="text-lg">Alphabet</label>
-                    <a href="#info-alphabet" class="ml-4"><IconQuestion /></a>
+                    <InfoLink link-to="info-alphabet" />
                   </div>
                   <select
                     id="alphabet"

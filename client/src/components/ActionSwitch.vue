@@ -14,11 +14,11 @@ watch(action, async (newAction, oldAction) => {
     if (newAction === "encrypt") {
       encryptClass.value = chosen;
       decryptClass.value = disabled;
-      // change state to action: encrypt
+      //TODO: change state to action: encrypt
     } else if (newAction === "decrypt") {
       encryptClass.value = disabled;
       decryptClass.value = chosen;
-      // change state to action: decrpyt
+      //TODO: change state to action: decrpyt
     }
   }
 });
