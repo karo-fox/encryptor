@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-import { usePropsStore } from "./props";
+import { useParamsStore } from "./params";
 
 enum Cipher {
   Ceasar = "ceasar",
@@ -16,14 +16,14 @@ export const useFormStore = defineStore("form", () => {
   const action = ref(Action.Encrypt);
   const cipher = ref(Cipher.Ceasar);
   const message = ref("");
-  const props = usePropsStore();
+  const params = useParamsStore();
 
   const asJson = computed(() => {
     return JSON.stringify({
       action: action.value,
       text: message.value,
       cipher: cipher.value,
-      props: props.props,
+      params: params.params,
     });
   });
 
@@ -37,5 +37,5 @@ export const useFormStore = defineStore("form", () => {
     });
   }
 
-  return { action, cipher, message, props, asJson, sendForm };
+  return { action, cipher, message, params, asJson, sendForm };
 });
