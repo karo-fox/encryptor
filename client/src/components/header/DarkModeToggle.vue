@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
-import IconSun from "./icons/IconSun.vue";
-import IconMoon from "./icons/IconMoon.vue";
+import IconSun from "../icons/IconSun.vue";
+import IconMoon from "../icons/IconMoon.vue";
 import { checkDarkMode, useToggleDarkMode } from "@/composables/toggleDarkMode";
 
 const isDarkMode = ref(checkDarkMode());

@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { useToggleDarkMode } from "./composables/toggleDarkMode";
 import CopiableBlock from "./components/CopiableBlock.vue";
-import AppHeader from "./components/AppHeader.vue";
-import ActionSwitch from "./components/ActionSwitch.vue";
+import AppHeader from "./components/header/AppHeader.vue";
+import ActionSwitch from "./components/form/ActionSwitch.vue";
 import InfoLink from "./components/InfoLink.vue";
+import { useFormStore } from "./stores/form";
+
+const formStore = useFormStore();
 
 useToggleDarkMode();
 </script>
@@ -24,67 +27,68 @@ useToggleDarkMode();
     <div class="overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <main class="mt-16">
-          <form action="post">
-            <div class="flex justify-center py-4 mb-4">
-              <ActionSwitch />
-            </div>
-            <div class="flex justify-center items-center py-4">
-              <select
-                name="cipher"
-                class="text-lg p-4 bg-slate-200 rounded-md text-slate-900 px-4 lg:px-16"
-              >
-                <option value="ceasar">Ceasar's</option>
-                <option value="switch">Switch</option>
-              </select>
-              <InfoLink link-to="info-ceasar" />
-            </div>
-            <div class="grid md:grid-cols-3">
-              <div class="py-4 md:col-span-2">
-                <div class="py-4">
-                  <textarea
-                    name="message"
-                    id="message"
-                    class="w-full min-h-[24rem] p-8 bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-slate-50 border-solid border-2 rounded-md"
-                  >
+          <div class="flex justify-center py-4 mb-4">
+            <ActionSwitch />
+          </div>
+          <div class="flex justify-center items-center py-4">
+            <select
+              name="cipher"
+              class="text-lg p-4 bg-slate-200 rounded-md text-slate-900 px-4 lg:px-16"
+            >
+              <option value="ceasar">Ceasar's</option>
+              <option value="switch">Switch</option>
+            </select>
+            <InfoLink link-to="info-ceasar" />
+          </div>
+          <div class="grid md:grid-cols-3">
+            <div class="py-4 md:col-span-2">
+              <div class="py-4">
+                <textarea
+                  spellcheck="false"
+                  name="message"
+                  id="message"
+                  class="w-full min-h-[24rem] p-8 bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-slate-50 border-solid border-2 rounded-md"
+                >
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod illum aliquam temporibus corrupti eos provident dignissimos consequuntur repellat, necessitatibus facere error natus cum molestiae molestias ad odio totam quae vitae.
-                  </textarea>
-                </div>
-              </div>
-              <div class="py-4 md:ml-8 lg:ml-16">
-                <div id="props" class="py-4 flex flex-col">
-                  <div class="py-4 flex items-center ml-16 md:ml-0">
-                    <label for="shift" class="text-lg">Shift</label>
-                    <InfoLink link-to="info-shift" />
-                  </div>
-                  <input
-                    type="range"
-                    name="shift"
-                    id="shift"
-                    class="py-4 w-64 mx-auto"
-                  />
-                  <div class="py-4 flex items-center ml-16 md:ml-0">
-                    <label for="alphabet" class="text-lg">Alphabet</label>
-                    <InfoLink link-to="info-alphabet" />
-                  </div>
-                  <select
-                    id="alphabet"
-                    name="alphabet"
-                    class="p-4 w-64 mx-auto bg-slate-200 rounded-md text-slate-900"
-                  >
-                    <option value="en">English</option>
-                    <option value="pl">Polish</option>
-                  </select>
-                </div>
+                  </textarea
+                >
               </div>
             </div>
-            <div class="flex justify-end py-4">
-              <button
-                class="rounded-md bg-slate-900 text-slate-50 dark:bg-slate-300 dark:text-slate-900 py-4 px-8 lg:px-16"
-              >
-                Encrypt
-              </button>
+            <div class="py-4 md:ml-8 lg:ml-16">
+              <div id="props" class="py-4 flex flex-col">
+                <div class="py-4 flex items-center ml-16 md:ml-0">
+                  <label for="shift" class="text-lg">Shift</label>
+                  <InfoLink link-to="info-shift" />
+                </div>
+                <input
+                  type="range"
+                  name="shift"
+                  id="shift"
+                  class="py-4 w-64 mx-auto"
+                />
+                <div class="py-4 flex items-center ml-16 md:ml-0">
+                  <label for="alphabet" class="text-lg">Alphabet</label>
+                  <InfoLink link-to="info-alphabet" />
+                </div>
+                <select
+                  id="alphabet"
+                  name="alphabet"
+                  class="p-4 w-64 mx-auto bg-slate-200 rounded-md text-slate-900"
+                >
+                  <option value="en">English</option>
+                  <option value="pl">Polish</option>
+                </select>
+              </div>
             </div>
-          </form>
+          </div>
+          <div class="flex justify-end py-4">
+            <button
+              class="rounded-md bg-slate-900 text-slate-50 dark:bg-slate-300 dark:text-slate-900 py-4 px-8 lg:px-16"
+              @click="formStore.sendForm()"
+            >
+              Encrypt
+            </button>
+          </div>
           <output>
             <div class="pb-8">
               <div class="text-xl py-4">Your results:</div>

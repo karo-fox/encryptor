@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DarkModeToggle from "./DarkModeToggle.vue";
-import IconGithub from "./icons/IconGithub.vue";
+import IconGithub from "../icons/IconGithub.vue";
 </script>
 
 <template>
