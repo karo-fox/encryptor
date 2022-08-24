@@ -5,6 +5,8 @@ import AppHeader from "./components/header/AppHeader.vue";
 import ActionSwitch from "./components/form/ActionSwitch.vue";
 import InfoLink from "./components/InfoLink.vue";
 import { useFormStore } from "./stores/form";
+import CipherSelect from "./components/form/CipherSelect.vue";
+import TextInput from "./components/form/TextInput.vue";
 
 const formStore = useFormStore();
 
@@ -35,32 +37,18 @@ useToggleDarkMode();
           </div>
           <p class="flex justify-center text-slate-500">Choose the cipher</p>
           <div class="flex justify-center items-center py-4">
-            <select
-              name="cipher"
-              class="text-lg p-4 bg-slate-300 rounded-md dark:text-slate-900 px-4 lg:px-16"
-            >
-              <option value="ceasar">Ceasar's</option>
-              <option value="switch">Switch</option>
-            </select>
+            <CipherSelect />
             <InfoLink link-to="info-ceasar" />
           </div>
           <div class="grid md:grid-cols-3">
             <div class="py-4 md:col-span-2">
               <p class="text-slate-500">Type your message here</p>
               <div class="py-4">
-                <textarea
-                  spellcheck="false"
-                  name="message"
-                  id="message"
-                  class="w-full min-h-[24rem] p-8 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50 border-solid border-2 rounded-md border-cyan-500"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod illum aliquam temporibus corrupti eos provident dignissimos consequuntur repellat, necessitatibus facere error natus cum molestiae molestias ad odio totam quae vitae.
-                  </textarea
-                >
+                <TextInput />
               </div>
             </div>
             <div class="py-4 md:ml-8 lg:ml-16">
-              <div id="props" class="py-4 flex flex-col">
+              <div id="params" class="py-4 flex flex-col">
                 <p class="text-slate-500">Adjust cipher settings</p>
                 <div class="py-4 flex items-center ml-16 md:ml-0">
                   <label for="shift" class="text-lg">Shift</label>

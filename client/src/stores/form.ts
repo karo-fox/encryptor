@@ -2,12 +2,12 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { useParamsStore } from "./params";
 
-enum Cipher {
+export enum Cipher {
   Ceasar = "ceasar",
   Switch = "switch",
 }
 
-enum Action {
+export enum Action {
   Encrypt = "encrypt",
   Decrypt = "decrypt",
 }

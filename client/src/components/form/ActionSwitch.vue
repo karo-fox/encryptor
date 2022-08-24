@@ -1,23 +1,25 @@
 <script setup lang="ts">
+import { Action, useFormStore } from "@/stores/form";
 import { ref, watch } from "vue";
 
-const action = ref("encrypt");
+const formStore = useFormStore();
+
+const action = ref(formStore.action);
 const chosen = "bg-cyan-500 text-slate-50 dark:bg-cyan-500 dark:text-slate-900";
 const disabled =
   "bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-slate-50";
-const encryptClass = ref(chosen);
-const decryptClass = ref(disabled);
+const encryptClass = ref(action.value == Action.Encrypt ? chosen : disabled);
+const decryptClass = ref(action.value == Action.Decrypt ? chosen : disabled);
 
-watch(action, async (newAction, oldAction) => {
+watch(action, (newAction, oldAction) => {
   if (newAction != oldAction) {
-    if (newAction === "encrypt") {
+    formStore.action = newAction;
+    if (newAction === Action.Encrypt) {
       encryptClass.value = chosen;
       decryptClass.value = disabled;
-      //TODO: change state to action: encrypt
-    } else if (newAction === "decrypt") {
+    } else if (newAction === Action.Decrypt) {
       encryptClass.value = disabled;
       decryptClass.value = chosen;
-      //TODO: change state to action: decrpyt
     }
   }
 });
@@ -28,7 +30,7 @@ watch(action, async (newAction, oldAction) => {
     name="action"
     type="button"
     :class="`py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md ${encryptClass}`"
-    @click="action = 'encrypt'"
+    @click="action = Action.Encrypt"
   >
     Encrypt
   </button>
@@ -36,7 +38,7 @@ watch(action, async (newAction, oldAction) => {
     name="action"
     type="button"
     :class="`ml-4 sm:ml-16 lg:ml-32 py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md ${decryptClass}`"
-    @click="action = 'decrypt'"
+    @click="action = Action.Decrypt"
   >
     Decrypt
   </button>
