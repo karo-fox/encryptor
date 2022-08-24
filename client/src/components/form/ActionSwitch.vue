@@ -2,8 +2,7 @@
 import { ref, watch } from "vue";
 
 const action = ref("encrypt");
-const chosen =
-  "bg-slate-900 text-slate-50 dark:bg-slate-300 dark:text-slate-900";
+const chosen = "bg-cyan-500 text-slate-50 dark:bg-cyan-500 dark:text-slate-900";
 const disabled =
   "bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-slate-50";
 const encryptClass = ref(chosen);
@@ -31,7 +30,7 @@ watch(action, async (newAction, oldAction) => {
     :class="`py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md ${encryptClass}`"
     @click="action = 'encrypt'"
   >
-    Encrpyt
+    Encrypt
   </button>
   <button
     name="action"

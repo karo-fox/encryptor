@@ -27,13 +27,17 @@ useToggleDarkMode();
     <div class="overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <main class="mt-16">
+          <p class="flex justify-center text-slate-500">
+            What do you want to do?
+          </p>
           <div class="flex justify-center py-4 mb-4">
             <ActionSwitch />
           </div>
+          <p class="flex justify-center text-slate-500">Choose the cipher</p>
           <div class="flex justify-center items-center py-4">
             <select
               name="cipher"
-              class="text-lg p-4 bg-slate-200 rounded-md text-slate-900 px-4 lg:px-16"
+              class="text-lg p-4 bg-slate-300 rounded-md dark:text-slate-900 px-4 lg:px-16"
             >
               <option value="ceasar">Ceasar's</option>
               <option value="switch">Switch</option>
@@ -42,12 +46,13 @@ useToggleDarkMode();
           </div>
           <div class="grid md:grid-cols-3">
             <div class="py-4 md:col-span-2">
+              <p class="text-slate-500">Type your message here</p>
               <div class="py-4">
                 <textarea
                   spellcheck="false"
                   name="message"
                   id="message"
-                  class="w-full min-h-[24rem] p-8 bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-slate-50 border-solid border-2 rounded-md"
+                  class="w-full min-h-[24rem] p-8 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50 border-solid border-2 rounded-md border-cyan-500"
                 >
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod illum aliquam temporibus corrupti eos provident dignissimos consequuntur repellat, necessitatibus facere error natus cum molestiae molestias ad odio totam quae vitae.
                   </textarea
@@ -56,6 +61,7 @@ useToggleDarkMode();
             </div>
             <div class="py-4 md:ml-8 lg:ml-16">
               <div id="props" class="py-4 flex flex-col">
+                <p class="text-slate-500">Adjust cipher settings</p>
                 <div class="py-4 flex items-center ml-16 md:ml-0">
                   <label for="shift" class="text-lg">Shift</label>
                   <InfoLink link-to="info-shift" />
@@ -73,7 +79,7 @@ useToggleDarkMode();
                 <select
                   id="alphabet"
                   name="alphabet"
-                  class="p-4 w-64 mx-auto bg-slate-200 rounded-md text-slate-900"
+                  class="p-4 w-64 mx-auto bg-slate-300 rounded-md text-slate-900"
                 >
                   <option value="en">English</option>
                   <option value="pl">Polish</option>
@@ -83,7 +89,7 @@ useToggleDarkMode();
           </div>
           <div class="flex justify-end py-4">
             <button
-              class="rounded-md bg-slate-900 text-slate-50 dark:bg-slate-300 dark:text-slate-900 py-4 px-8 lg:px-16"
+              class="rounded-md bg-cyan-500 text-slate-50 dark:bg-cyan-500 dark:text-slate-900 py-4 px-8 lg:px-16"
               @click="formStore.sendForm()"
             >
               Encrypt
@@ -93,7 +99,7 @@ useToggleDarkMode();
             <div class="pb-8">
               <div class="text-xl py-4">Your results:</div>
               <div
-                class="border border-solid min-h-[16rem] bg-slate-300 dark:bg-slate-900 rounded-md"
+                class="min-h-[16rem] bg-slate-50 dark:bg-slate-900 rounded-md border-cyan-500 border-2 border-solid"
               >
                 <CopiableBlock
                   result="
