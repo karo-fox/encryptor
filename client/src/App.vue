@@ -7,6 +7,7 @@ import InfoLink from "./components/InfoLink.vue";
 import { useFormStore } from "./stores/form";
 import CipherSelect from "./components/form/CipherSelect.vue";
 import TextInput from "./components/form/TextInput.vue";
+import ParamsPanel from "./components/form/ParamsPanel.vue";
 
 const formStore = useFormStore();
 
@@ -50,28 +51,7 @@ useToggleDarkMode();
             <div class="py-4 md:ml-8 lg:ml-16">
               <div id="params" class="py-4 flex flex-col">
                 <p class="text-slate-500">Adjust cipher settings</p>
-                <div class="py-4 flex items-center ml-16 md:ml-0">
-                  <label for="shift" class="text-lg">Shift</label>
-                  <InfoLink link-to="info-shift" />
-                </div>
-                <input
-                  type="range"
-                  name="shift"
-                  id="shift"
-                  class="py-4 w-64 mx-auto"
-                />
-                <div class="py-4 flex items-center ml-16 md:ml-0">
-                  <label for="alphabet" class="text-lg">Alphabet</label>
-                  <InfoLink link-to="info-alphabet" />
-                </div>
-                <select
-                  id="alphabet"
-                  name="alphabet"
-                  class="p-4 w-64 mx-auto bg-slate-300 rounded-md text-slate-900"
-                >
-                  <option value="en">English</option>
-                  <option value="pl">Polish</option>
-                </select>
+                <ParamsPanel />
               </div>
             </div>
           </div>

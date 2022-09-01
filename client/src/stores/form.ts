@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { computed, ref } from "vue";
+import { computed, ref, type Ref } from "vue";
 
 export enum Cipher {
   Ceasar = "ceasar",
@@ -11,12 +11,18 @@ export enum Action {
   Decrypt = "decrypt",
 }
 
+export interface Params {
+  alphabet?: string;
+  shift?: number;
+  switchKey?: string;
+}
+
 export const useFormStore = defineStore("form", () => {
   const action = ref(Action.Encrypt);
   const cipher = ref(Cipher.Ceasar);
   const message = ref("");
 
-  const params = ref({ shift: 1 }); //hardcoded for now TODO:
+  const params: Ref<Params> = ref({});
 
   const result = ref("...");
 
