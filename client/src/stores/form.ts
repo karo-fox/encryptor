@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-import { useParamsStore } from "./params";
 
 export enum Cipher {
   Ceasar = "ceasar",
@@ -16,26 +15,36 @@ export const useFormStore = defineStore("form", () => {
   const action = ref(Action.Encrypt);
   const cipher = ref(Cipher.Ceasar);
   const message = ref("");
-  const params = useParamsStore();
+
+  const params = ref({ shift: 1 }); //hardcoded for now TODO:
+
+  const result = ref("...");
 
   const asJson = computed(() => {
     return JSON.stringify({
       action: action.value,
       text: message.value,
       cipher: cipher.value,
-      params: params.params,
+      params: params.value,
     });
   });
 
   async function sendForm() {
-    await fetch("/api", {
+    const response = await fetch("/api", {
       method: "POST",
       body: asJson.value,
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    }).then((res) => res.json());
+
+    if (response.result) {
+      result.value = response.result;
+    } else if (response.exception) {
+      //TODO: Handle excpetion
+      console.log(response.exception);
+    }
   }
 
-  return { action, cipher, message, params, asJson, sendForm };
+  return { action, cipher, message, params, result, sendForm };
 });

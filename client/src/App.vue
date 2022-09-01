@@ -89,13 +89,7 @@ useToggleDarkMode();
               <div
                 class="min-h-[16rem] bg-slate-50 dark:bg-slate-900 rounded-md border-cyan-500 border-2 border-solid"
               >
-                <CopiableBlock
-                  result="
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Repellendus natus ipsum enim ab quam tempora id voluptate omnis
-                nulla maiores rerum alias praesentium rem velit, excepturi
-                necessitatibus, perspiciatis libero eius!"
-                />
+                <CopiableBlock :result="formStore.result" />
               </div>
             </div>
           </output>
