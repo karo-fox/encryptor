@@ -2,11 +2,13 @@
 import { useFormStore } from "@/stores/form";
 import { ref, watchEffect } from "vue";
 import InfoLink from "@/components/InfoLink.vue";
-import NumberInput from "../inputs/NumberInput.vue";
+import DynamicField from "../DynamicField.vue";
+import { InputType, type DynamicInputOptionsSet } from "@/core/models";
+import { required, maxValue, notNegative } from "@/core/validators";
 
 const form = useFormStore();
 
-const shift = ref(0);
+const shift = ref(1);
 const alphabet = ref("en");
 
 watchEffect(() => {
@@ -14,21 +16,23 @@ watchEffect(() => {
     params: { shift: shift.value, alphabet: alphabet.value },
   });
 });
+
+const options: DynamicInputOptionsSet = {
+  shift: {
+    inputStyle: "py-4 w-16 ml-8 rounded-md bg-slate-300 text-slate-900 p-2",
+    link: true,
+  },
+};
 </script>
 
 <template>
-  <div class="py-4 flex items-center ml-16 md:ml-0 justify-start">
-    <label for="shift" class="text-lg">Shift</label>
-    <InfoLink link-to="info-shift" />
-  </div>
-  <!-- <input
-    type="number"
-    name="shift"
-    id="shift"
-    class="py-4 w-16 ml-8 rounded-md bg-slate-300 text-slate-900 p-2"
+  <DynamicField
     v-model="shift"
-  /> -->
-  <NumberInput v-model="shift" />
+    name="shift"
+    :type="InputType.Number"
+    :options="options.shift"
+    :validators="[required, maxValue(26), notNegative]"
+  />
   <div class="py-4 flex items-center ml-16 md:ml-0">
     <label for="alphabet" class="text-lg">Alphabet</label>
     <InfoLink link-to="info-alphabet" />

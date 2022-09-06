@@ -6,8 +6,8 @@ import ActionSwitch from "./components/form/ActionSwitch.vue";
 import InfoLink from "./components/InfoLink.vue";
 import { useFormStore } from "./stores/form";
 import CipherSelect from "./components/form/CipherSelect.vue";
-import TextInput from "./components/form/TextInput.vue";
 import ParamsPanel from "./components/form/ParamsPanel.vue";
+import MessageInput from "./components/form/MessageInput.vue";
 
 const formStore = useFormStore();
 
@@ -45,7 +45,7 @@ useToggleDarkMode();
             <div class="py-4 md:col-span-2">
               <p class="text-slate-500">Type your message here</p>
               <div class="py-4">
-                <TextInput />
+                <MessageInput />
               </div>
             </div>
             <div class="py-4 md:ml-8 lg:ml-16">
