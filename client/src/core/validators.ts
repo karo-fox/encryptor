@@ -1,17 +1,17 @@
-import type { FieldValidator, FieldValue, NumberValidator } from "./models";
+import type { FieldValue } from "./models";
 
-export const required: FieldValidator = (value: FieldValue): string => {
+export const required = (value: FieldValue): string => {
   return !value || value === null || value === undefined ? "error message" : "";
 };
 
 export const maxValue =
-  (max: number): NumberValidator =>
+  (max: number) =>
   (value: number): string => {
     return value > max ? "error message" : "";
   };
 
 export const minValue =
-  (min: number): NumberValidator =>
+  (min: number) =>
   (value: number): string => {
     return value < min ? "error message" : "";
   };

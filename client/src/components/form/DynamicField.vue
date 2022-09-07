@@ -1,24 +1,19 @@
 <script setup lang="ts">
 import { useValidate } from "@/composables/validate";
-import type {
-  DynamicInputOptions,
-  FieldValue,
-  InputType,
-  ValidatorArray,
-} from "@/core/models";
+import type { DynamicInputOptions, FieldValue, InputType } from "@/core/models";
 import { capitalize, computed } from "vue";
 import InfoLink from "../InfoLink.vue";
 
 const props = defineProps<{
-  modelValue: FieldValue;
+  modelValue: any;
   name: string;
   type: InputType;
-  validators?: ValidatorArray;
+  validators?: ((value: any) => string)[];
   options?: DynamicInputOptions;
 }>();
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: FieldValue): void;
+  (e: "update:modelValue", value: typeof props.modelValue): void;
 }>();
 
 const value = computed({
@@ -31,7 +26,7 @@ const value = computed({
 });
 
 const errors = computed(() => {
-  return useValidate(value.value, props.validators);
+  return props.validators ? useValidate(value.value, props.validators) : [];
 });
 </script>
 

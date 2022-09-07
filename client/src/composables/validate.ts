@@ -1,16 +1,13 @@
-import type { FieldValue, Validator } from "@/core/models";
+import type { Flatten } from "@/core/models";
 
 export function useValidate(
-  value: FieldValue,
-  validators?: Validator[]
+  value: undefined,
+  validators: ((value: undefined) => string)[]
 ): string[] {
   const errors: string[] = [];
-  if (validators) {
-    validators.forEach((validation: Validator) => {
-      if (validation(value)) {
-        errors.push(validation(value));
-      }
-    });
-  }
+  validators.forEach((validationFn: Flatten<typeof validators>) => {
+    errors.push(validationFn(value));
+  });
+
   return errors;
 }

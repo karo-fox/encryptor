@@ -5,23 +5,14 @@ export enum InputType {
 
 export type FieldValue = string | number | boolean;
 
-type Validator<T> = (value: T) => string;
-
-export type NumberValidator = Validator<number>;
-export type TextValidator = Validator<string>;
-export type FieldValidator = Validator<FieldValue>;
-
-export type ValidatorArray = (
-  | FieldValidator
-  | NumberValidator
-  | TextValidator
-)[];
-
 export type DynamicInputOptions = {
   inputStyle?: string;
   link?: boolean;
+  mask?: string;
 };
 
 export type DynamicInputOptionsSet = {
   [key: string]: DynamicInputOptions;
 };
+
+export type Flatten<T> = T extends any[] ? T[number] : T;
