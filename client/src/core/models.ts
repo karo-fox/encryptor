@@ -5,14 +5,13 @@ export enum InputType {
 
 export type FieldValue = string | number | boolean;
 
-export type DynamicInputOptions = {
-  inputStyle?: string;
+export type DynamicFieldOptions = {
+  style?: string;
   link?: boolean;
-  mask?: string;
 };
 
-export type DynamicInputOptionsSet = {
-  [key: string]: DynamicInputOptions;
+export type DynamicFieldOptionsSet = {
+  [key: string]: DynamicFieldOptions;
 };
 
 export type Flatten<T> = T extends any[] ? T[number] : T;

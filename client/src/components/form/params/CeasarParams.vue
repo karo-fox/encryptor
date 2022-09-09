@@ -2,8 +2,8 @@
 import { useFormStore } from "@/stores/form";
 import { ref, watchEffect } from "vue";
 import InfoLink from "@/components/InfoLink.vue";
-import DynamicField from "../DynamicField.vue";
-import { InputType, type DynamicInputOptionsSet } from "@/core/models";
+import DynamicInputField from "../DynamicInputField.vue";
+import { InputType, type DynamicFieldOptionsSet } from "@/core/models";
 import { required, maxValue, notNegative } from "@/core/validators";
 
 const form = useFormStore();
@@ -17,16 +17,16 @@ watchEffect(() => {
   });
 });
 
-const options: DynamicInputOptionsSet = {
+const options: DynamicFieldOptionsSet = {
   shift: {
-    inputStyle: "py-4 w-16 ml-8 rounded-md bg-slate-300 text-slate-900 p-2",
+    style: "py-4 w-16 ml-8 rounded-md bg-slate-300 text-slate-900 p-2",
     link: true,
   },
 };
 </script>
 
 <template>
-  <DynamicField
+  <DynamicInputField
     v-model="shift"
     name="shift"
     :type="InputType.Number"

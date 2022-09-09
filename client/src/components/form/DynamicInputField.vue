@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useValidate } from "@/composables/validate";
-import type { DynamicInputOptions, FieldValue, InputType } from "@/core/models";
+import type { DynamicFieldOptions, InputType } from "@/core/models";
 import { capitalize, computed } from "vue";
 import InfoLink from "../InfoLink.vue";
 
@@ -9,7 +9,7 @@ const props = defineProps<{
   name: string;
   type: InputType;
   validators?: ((value: any) => string)[];
-  options?: DynamicInputOptions;
+  options?: DynamicFieldOptions;
 }>();
 
 const emit = defineEmits<{
@@ -39,7 +39,7 @@ const errors = computed(() => {
     :type="type"
     :id="name"
     v-model="value"
-    :class="options?.inputStyle || ''"
+    :class="options?.style || ''"
   />
   <div class="mt-2 text-red-700">
     <p v-for="error in errors" :key="error">
