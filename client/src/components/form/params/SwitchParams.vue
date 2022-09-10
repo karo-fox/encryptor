@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import type { DynamicFieldOptionsSet } from "@/core/models";
 import { useFormStore } from "@/stores/form";
+import { useI18n } from "vue-i18n";
 import { ref, watchEffect } from "vue";
+
+import type { DynamicFieldOptionsSet } from "@/core/models";
+
 import DynamicSelectField from "../DynamicSelectField.vue";
 
 const form = useFormStore();
+const { t } = useI18n();
 
-const switchKey = ref("");
+const switchKey = ref("ga-de-ry-po-lu-ki");
 
 watchEffect(() => {
   form.$patch({
@@ -14,10 +18,7 @@ watchEffect(() => {
   });
 });
 
-const switchKeySelectOptions = [
-  { text: "ga-de-ry-po-lu-ki", value: "ga-de-ry-po-lu-ki" },
-  { text: "po-li-ty-ka-re-nu", value: "po-li-ty-ka-re-nu" },
-];
+const switchKeySelectOptions = ["ga-de-ry-po-lu-ki", "po-li-ty-ka-re-nu"];
 
 const options: DynamicFieldOptionsSet = {
   switchKey: {
@@ -30,8 +31,19 @@ const options: DynamicFieldOptionsSet = {
 <template>
   <DynamicSelectField
     v-model="switchKey"
-    name="switch key"
-    :select-options="switchKeySelectOptions"
+    :name="t('switch-key')"
+    :select-values="switchKeySelectOptions"
     :options="options.switchKey"
   />
 </template>
+
+<i18n>
+  {
+    "pl": {
+      "switch-key": "klucz zamiany",
+    },
+    "en": {
+      "switch-key": "switch key",
+    }
+  }
+</i18n>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Action, useFormStore } from "@/stores/form";
-import { ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+import { ref, watch, capitalize } from "vue";
 
 const formStore = useFormStore();
+const { t } = useI18n();
 
 const action = ref(formStore.action);
 const chosen = "bg-cyan-500 text-slate-50 dark:bg-cyan-500 dark:text-slate-900";
@@ -32,7 +34,7 @@ watch(action, (newAction, oldAction) => {
     :class="`py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md ${encryptClass}`"
     @click="action = Action.Encrypt"
   >
-    Encrypt
+    {{ capitalize(t("encrypt")) }}
   </button>
   <button
     name="action"
@@ -40,6 +42,19 @@ watch(action, (newAction, oldAction) => {
     :class="`ml-4 sm:ml-16 lg:ml-32 py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md ${decryptClass}`"
     @click="action = Action.Decrypt"
   >
-    Decrypt
+    {{ capitalize(t("decrypt")) }}
   </button>
 </template>
+
+<i18n>
+  {
+    "pl": {
+      "encrypt": "zaszyfruj",
+      "decrypt": "rozszyfruj",
+    },
+    "en": {
+      "encrypt": "encrypt",
+      "decrypt": "decrypt",
+    }
+  }
+</i18n>

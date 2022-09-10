@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { useFormStore } from "@/stores/form";
-import { ref, watchEffect } from "vue";
-import InfoLink from "@/components/InfoLink.vue";
-import DynamicInputField from "../DynamicInputField.vue";
+import { useI18n } from "vue-i18n";
+import { ref, watchEffect, capitalize } from "vue";
+
 import { InputType, type DynamicFieldOptionsSet } from "@/core/models";
 import { required, maxValue, notNegative } from "@/core/validators";
+
+import DynamicInputField from "../DynamicInputField.vue";
 import DynamicSelectField from "../DynamicSelectField.vue";
 
 const form = useFormStore();
+const { t } = useI18n();
 
 const shift = ref(1);
 const alphabet = ref("en");
@@ -29,37 +32,45 @@ const options: DynamicFieldOptionsSet = {
   },
 };
 
-const alphabetSelectOptions = [
-  { text: "English", value: "en" },
-  { text: "Polish", value: "pl" },
-];
+const alphabetSelectValues = ["en", "pl"];
+const alphabetTranslation = {
+  en: {
+    en: "English",
+    pl: "Polish",
+  },
+  pl: {
+    pl: "polski",
+    en: "angielski",
+  },
+};
 </script>
 
 <template>
   <DynamicInputField
     v-model="shift"
-    name="shift"
+    :name="t('shift')"
     :type="InputType.Number"
     :options="options.shift"
     :validators="[required, maxValue(26), notNegative]"
   />
   <DynamicSelectField
     v-model="alphabet"
-    name="alphabet"
-    :select-options="alphabetSelectOptions"
+    :name="t('alphabet')"
+    :select-values="alphabetSelectValues"
     :options="options.alphabet"
+    :translation="alphabetTranslation"
   />
-  <!-- <div class="py-4 flex items-center ml-16 md:ml-0">
-    <label for="alphabet" class="text-lg">Alphabet</label>
-    <InfoLink link-to="info-alphabet" />
-  </div> -->
-  <!-- <select
-    id="alphabet"
-    name="alphabet"
-    class="p-4 w-32 ml-8 bg-slate-300 rounded-md text-slate-900"
-    v-model="alphabet"
-  >
-    <option value="en">English</option>
-    <option value="pl">Polish</option>
-  </select> -->
 </template>
+
+<i18n>
+  {
+    "pl": {
+      "shift": "przesunięcie",
+      "alphabet": "alfabet",
+    },
+    "en": {
+      "shift": "shift",
+      "alphabet": "alphabet",
+    },
+  }
+</i18n>
