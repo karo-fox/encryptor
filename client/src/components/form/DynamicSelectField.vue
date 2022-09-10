@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DynamicFieldOptions } from "@/core/models";
 import { computed, capitalize } from "vue";
+import InfoLink from "../InfoLink.vue";
 
 const props = defineProps<{
   modelValue: any;

@@ -5,6 +5,7 @@ import InfoLink from "@/components/InfoLink.vue";
 import DynamicInputField from "../DynamicInputField.vue";
 import { InputType, type DynamicFieldOptionsSet } from "@/core/models";
 import { required, maxValue, notNegative } from "@/core/validators";
+import DynamicSelectField from "../DynamicSelectField.vue";
 
 const form = useFormStore();
 
@@ -22,7 +23,16 @@ const options: DynamicFieldOptionsSet = {
     style: "py-4 w-16 ml-8 rounded-md bg-slate-300 text-slate-900 p-2",
     link: true,
   },
+  alphabet: {
+    style: "p-4 w-32 ml-8 bg-slate-300 rounded-md text-slate-900",
+    link: true,
+  },
 };
+
+const alphabetSelectOptions = [
+  { text: "English", value: "en" },
+  { text: "Polish", value: "pl" },
+];
 </script>
 
 <template>
@@ -33,11 +43,17 @@ const options: DynamicFieldOptionsSet = {
     :options="options.shift"
     :validators="[required, maxValue(26), notNegative]"
   />
-  <div class="py-4 flex items-center ml-16 md:ml-0">
+  <DynamicSelectField
+    v-model="alphabet"
+    name="alphabet"
+    :select-options="alphabetSelectOptions"
+    :options="options.alphabet"
+  />
+  <!-- <div class="py-4 flex items-center ml-16 md:ml-0">
     <label for="alphabet" class="text-lg">Alphabet</label>
     <InfoLink link-to="info-alphabet" />
-  </div>
-  <select
+  </div> -->
+  <!-- <select
     id="alphabet"
     name="alphabet"
     class="p-4 w-32 ml-8 bg-slate-300 rounded-md text-slate-900"
@@ -45,5 +61,5 @@ const options: DynamicFieldOptionsSet = {
   >
     <option value="en">English</option>
     <option value="pl">Polish</option>
-  </select>
+  </select> -->
 </template>
