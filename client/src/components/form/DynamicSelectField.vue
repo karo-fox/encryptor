@@ -7,7 +7,7 @@ import type { DynamicFieldOptions } from "@/core/models";
 import InfoLink from "../InfoLink.vue";
 
 const props = defineProps<{
-  modelValue: any;
+  modelValue: string;
   name: string;
   selectValues: string[];
   translation?: {

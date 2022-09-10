@@ -11,6 +11,7 @@ import CopiableBlock from "./components/CopiableBlock.vue";
 import AppHeader from "./components/header/AppHeader.vue";
 import ActionSwitch from "./components/form/ActionSwitch.vue";
 import InfoLink from "./components/InfoLink.vue";
+import ActionButton from "./components/form/ActionButton.vue";
 
 const formStore = useFormStore();
 const { t } = useI18n();
@@ -62,12 +63,7 @@ useToggleDarkMode();
             </div>
           </div>
           <div class="flex justify-end py-4">
-            <button
-              class="rounded-md bg-cyan-500 text-slate-50 dark:bg-cyan-500 dark:text-slate-900 py-4 px-8 lg:px-16"
-              @click="formStore.sendForm()"
-            >
-              Encrypt
-            </button>
+            <ActionButton />
           </div>
           <output>
             <div class="pb-8">
