@@ -13,6 +13,7 @@ async function copyToClipboard() {
     <CopyToClipboardButton
       @copy="copyToClipboard"
       class="absolute top-1 right-1"
+      id="copiable-block"
     />
     <p class="p-8">
       {{ result }}

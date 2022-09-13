@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <a :href="`#${linkTo}`" class="ml-4">
+  <a :href="`#${linkTo}`" class="ml-4" :id="`link-to-${linkTo}`">
     <IconQuestion />
   </a>
 </template>

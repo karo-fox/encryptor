@@ -32,6 +32,7 @@ watch(action, (newAction, oldAction) => {
     name="action"
     type="button"
     :class="`py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md ${encryptClass}`"
+    id="encrypt-action"
     @click="action = Action.Encrypt"
   >
     {{ capitalize(t("encrypt")) }}
@@ -40,6 +41,7 @@ watch(action, (newAction, oldAction) => {
     name="action"
     type="button"
     :class="`ml-4 sm:ml-16 lg:ml-32 py-4 px-4 sm:px-16 text-lg lg:px-32 rounded-md ${decryptClass}`"
+    id="decrypt-action"
     @click="action = Action.Decrypt"
   >
     {{ capitalize(t("decrypt")) }}

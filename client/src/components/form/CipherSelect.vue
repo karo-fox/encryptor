@@ -11,6 +11,7 @@ const { t } = useI18n();
     v-model="formStore.cipher"
     name="cipher"
     class="text-lg p-4 bg-slate-300 rounded-md dark:text-slate-900 px-4 lg:px-16"
+    id="cipher-select"
   >
     <option v-for="option in Cipher" :value="option" :key="`id-${option}`">
       {{ t(option) }}

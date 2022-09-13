@@ -42,7 +42,12 @@ function translateOrNot(value: string): string {
     <label class="text-lg" :for="name">{{ capitalize(name) }}</label>
     <InfoLink v-if="options?.link" :link-to="`info-${name}`" />
   </div>
-  <select :name="name" :class="options?.style || ''" v-model="value">
+  <select
+    :name="name"
+    :class="options?.style || ''"
+    :id="`${name}-select`"
+    v-model="value"
+  >
     <option v-for="value in selectValues" :key="value" :value="value">
       {{ translateOrNot(value) }}
     </option>

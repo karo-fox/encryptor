@@ -37,7 +37,7 @@ const errors = computed(() => {
   </div>
   <input
     :type="type"
-    :id="name"
+    :id="`${name}-input`"
     v-model="value"
     :class="options?.style || ''"
   />

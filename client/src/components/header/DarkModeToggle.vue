@@ -27,10 +27,10 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <button class="inline" @click="isDarkMode = false">
+  <button class="inline" id="light-toggle" @click="isDarkMode = false">
     <IconSun :class="light" />
   </button>
-  <button class="inline ml-2" @click="isDarkMode = true">
+  <button class="inline ml-2" id="dark-toggle" @click="isDarkMode = true">
     <IconMoon :class="dark" />
   </button>
 </template>

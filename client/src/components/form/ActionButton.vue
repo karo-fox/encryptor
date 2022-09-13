@@ -10,6 +10,7 @@ const { t } = useI18n();
 <template>
   <button
     class="rounded-md bg-cyan-500 text-slate-50 dark:bg-cyan-500 dark:text-slate-900 py-4 px-8 lg:px-16"
+    id="action-btn"
     @click="formStore.sendForm()"
   >
     {{ capitalize(t(formStore.action)) }}
