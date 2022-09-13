@@ -26,7 +26,7 @@ export const useFormStore = defineStore("form", () => {
 
   const result = ref("...");
 
-  const asJson = computed(() => {
+  const asJsonString = computed(() => {
     return JSON.stringify({
       action: action.value,
       text: message.value,
@@ -38,7 +38,7 @@ export const useFormStore = defineStore("form", () => {
   async function sendForm() {
     const response = await fetch("/api", {
       method: "POST",
-      body: asJson.value,
+      body: asJsonString.value,
       headers: {
         "Content-Type": "application/json",
       },
@@ -52,5 +52,13 @@ export const useFormStore = defineStore("form", () => {
     }
   }
 
-  return { action, cipher, message, params, result, sendForm };
+  return {
+    action,
+    cipher,
+    message,
+    params,
+    result,
+    sendForm,
+    asJson: asJsonString,
+  };
 });

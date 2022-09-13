@@ -15,3 +15,8 @@ export type DynamicFieldOptionsSet = {
 };
 
 export type Flatten<T> = T extends any[] ? T[number] : T;
+
+export interface Translation {
+  en: { [key: string]: string };
+  pl: { [key: string]: string };
+}

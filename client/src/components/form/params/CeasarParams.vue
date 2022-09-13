@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useFormStore } from "@/stores/form";
 import { useI18n } from "vue-i18n";
-import { ref, watchEffect, capitalize } from "vue";
+import { ref, watchEffect } from "vue";
 
 import { InputType, type DynamicFieldOptionsSet } from "@/core/models";
 import { required, maxValue, notNegative } from "@/core/validators";

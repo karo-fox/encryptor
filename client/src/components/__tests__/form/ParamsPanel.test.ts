@@ -1,0 +1,39 @@
+import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import { createTestingPinia } from "@pinia/testing";
+
+import { Cipher, useFormStore } from "@/stores/form";
+
+import ParamsPanel from "@/components/form/ParamsPanel.vue";
+import { i18n } from "@/i18n/i18n";
+
+i18n.global.locale.value = "en";
+
+describe("Params Panel", () => {
+  it("renders Ceasar params", async () => {
+    const wrapper = mount(ParamsPanel, {
+      global: {
+        plugins: [createTestingPinia(), i18n],
+      },
+    });
+
+    const formStore = useFormStore();
+    await formStore.$patch({ cipher: Cipher.Ceasar });
+
+    expect(wrapper.text()).toContain("Shift");
+    expect(wrapper.text()).toContain("Alphabet");
+  });
+
+  it("renders Switch params", async () => {
+    const wrapper = mount(ParamsPanel, {
+      global: {
+        plugins: [createTestingPinia(), i18n],
+      },
+    });
+
+    const formStore = useFormStore();
+    await formStore.$patch({ cipher: Cipher.Switch });
+
+    expect(wrapper.text()).toContain("Switch key");
+  });
+});

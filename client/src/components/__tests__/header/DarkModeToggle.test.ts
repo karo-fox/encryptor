@@ -2,7 +2,7 @@ import { checkDarkMode } from "@/composables/toggleDarkMode";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 
-import DarkModeToggle from "../DarkModeToggle.vue";
+import DarkModeToggle from "@/components/header/DarkModeToggle.vue";
 
 describe("Dark Mode Toggle", () => {
   it("toggles dark mode", () => {

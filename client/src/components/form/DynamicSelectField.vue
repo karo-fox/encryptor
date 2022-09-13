@@ -2,18 +2,15 @@
 import { useI18n } from "vue-i18n";
 import { computed, capitalize } from "vue";
 
-import type { DynamicFieldOptions } from "@/core/models";
+import type { DynamicFieldOptions, Translation } from "@/core/models";
 
 import InfoLink from "../InfoLink.vue";
 
 const props = defineProps<{
-  modelValue: string;
+  modelValue: any;
   name: string;
   selectValues: string[];
-  translation?: {
-    en: { [key: string]: string };
-    pl: { [key: string]: string };
-  };
+  translation?: Translation;
   options?: DynamicFieldOptions;
 }>();
 

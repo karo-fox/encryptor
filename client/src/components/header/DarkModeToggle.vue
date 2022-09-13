@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
+
+import { checkDarkMode, useToggleDarkMode } from "@/composables/toggleDarkMode";
 import IconSun from "../icons/IconSun.vue";
 import IconMoon from "../icons/IconMoon.vue";
-import { checkDarkMode, useToggleDarkMode } from "@/composables/toggleDarkMode";
 
 const isDarkMode = ref(checkDarkMode());
 const chosen = "text-slate-900";

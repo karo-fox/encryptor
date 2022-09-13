@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import { Cipher, useFormStore } from "@/stores/form";
 import { useI18n } from "vue-i18n";
-import { ref, watch } from "vue";
 
 const formStore = useFormStore();
 const { t } = useI18n();
-
-const cipher = ref(formStore.cipher);
-
-watch(cipher, (newCipher, oldCipher) => {
-  if (newCipher != oldCipher) {
-    formStore.cipher = newCipher;
-  }
-});
 </script>
 
 <template>
   <select
-    v-model="cipher"
+    v-model="formStore.cipher"
     name="cipher"
     class="text-lg p-4 bg-slate-300 rounded-md dark:text-slate-900 px-4 lg:px-16"
   >

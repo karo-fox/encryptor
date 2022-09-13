@@ -1,20 +1,12 @@
 <script setup lang="ts">
 import { useFormStore } from "@/stores/form";
-import { ref, watch } from "vue";
 
 const formStore = useFormStore();
-const message = ref(formStore.message);
-
-watch(message, (newMessage, oldMessage) => {
-  if (newMessage != oldMessage) {
-    formStore.message = message.value;
-  }
-});
 </script>
 
 <template>
   <textarea
-    v-model="message"
+    v-model="formStore.message"
     spellcheck="false"
     placeholder="..."
     name="message"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CopyToClipboardButton from "./CopyToClipboardButton.vue";
 
-const props = defineProps(["result"]);
+const props = defineProps<{ result: string }>();
 
 async function copyToClipboard() {
   await navigator.clipboard.writeText(props.result);
