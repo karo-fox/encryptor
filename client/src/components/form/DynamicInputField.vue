@@ -41,7 +41,7 @@ const errors = computed(() => {
 <template>
   <div class="py-4 flex items-center ml-16 md:ml-0 justify-start">
     <label class="text-lg" :for="name">{{ capitalize(name) }}</label>
-    <InfoLink v-if="options?.link" :link-to="`info-${name}`" />
+    <InfoLink v-if="options?.link" :link-to="options.link" />
   </div>
   <input
     :type="type"

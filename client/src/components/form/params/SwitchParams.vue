@@ -23,7 +23,7 @@ const switchKeySelectOptions = ["ga-de-ry-po-lu-ki", "po-li-ty-ka-re-nu"];
 const options: DynamicFieldOptionsSet = {
   switchKey: {
     style: "py-4 ml-8 rounded-md bg-slate-300 text-slate-900 p-2",
-    link: true,
+    link: "switch-key-info",
   },
 };
 </script>

@@ -46,7 +46,7 @@ useToggleDarkMode();
           </p>
           <div class="flex justify-center items-center py-4">
             <CipherSelect />
-            <InfoLink link-to="info-ceasar" />
+            <InfoLink link-to="ceasar-info" />
           </div>
           <div class="grid md:grid-cols-3">
             <div class="py-4 md:col-span-2">
@@ -66,7 +66,7 @@ useToggleDarkMode();
             <ActionButton />
           </div>
           <output>
-            <div class="pb-8">
+            <div class="pb-8" id="result-panel">
               <div class="text-xl py-4">{{ t("results") }}:</div>
               <div
                 class="min-h-[16rem] bg-slate-50 dark:bg-slate-900 rounded-md border-cyan-500 border-2 border-solid"
@@ -78,7 +78,7 @@ useToggleDarkMode();
         </main>
         <section class="mb-32">
           <div class="py-4 border-b border-slate-300 dark:border-slate-700">
-            <h2 id="info-ceasar" class="text-xl py-4">
+            <h2 id="ceasar-info" class="text-xl py-4">
               How does the Ceasar's work?
             </h2>
             <p>
@@ -89,7 +89,7 @@ useToggleDarkMode();
             </p>
           </div>
           <div class="py-4 border-b border-slate-300 dark:border-slate-700">
-            <h3 id="info-shift" class="text-lg py-4">Shift</h3>
+            <h3 id="shift-info" class="text-lg py-4">Shift</h3>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam
               dolorum consectetur facere nulla fugit reprehenderit a, laboriosam
@@ -98,7 +98,7 @@ useToggleDarkMode();
             </p>
           </div>
           <div class="py-4 border-b border-slate-300 dark:border-slate-700">
-            <h3 id="info-alphabet" class="text-lg py-4">Alphabet</h3>
+            <h3 id="alphabet-info" class="text-lg py-4">Alphabet</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex unde
               eius quidem nostrum ipsum obcaecati, pariatur totam exercitationem

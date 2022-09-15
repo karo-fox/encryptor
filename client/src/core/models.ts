@@ -7,7 +7,7 @@ export type FieldValue = string | number | boolean;
 
 export type DynamicFieldOptions = {
   style?: string;
-  link?: boolean;
+  link?: string;
 };
 
 export type DynamicFieldOptionsSet = {
