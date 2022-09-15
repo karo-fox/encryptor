@@ -12,6 +12,7 @@ import AppHeader from "./components/header/AppHeader.vue";
 import ActionSwitch from "./components/form/ActionSwitch.vue";
 import InfoLink from "./components/InfoLink.vue";
 import ActionButton from "./components/form/ActionButton.vue";
+import DescriptionPanel from "./components/description/DescriptionPanel.vue";
 
 const formStore = useFormStore();
 const { t } = useI18n();
@@ -77,35 +78,7 @@ useToggleDarkMode();
           </output>
         </main>
         <section class="mb-32">
-          <div class="py-4 border-b border-slate-300 dark:border-slate-700">
-            <h2 id="ceasar-info" class="text-xl py-4">
-              How does the Ceasar's work?
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              quasi laudantium, assumenda sunt incidunt aperiam dolor,
-              repellendus dolores aliquid ullam doloribus magni, doloremque
-              alias nihil nemo perspiciatis veritatis tenetur iusto?
-            </p>
-          </div>
-          <div class="py-4 border-b border-slate-300 dark:border-slate-700">
-            <h3 id="shift-info" class="text-lg py-4">Shift</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam
-              dolorum consectetur facere nulla fugit reprehenderit a, laboriosam
-              veritatis? Culpa repudiandae earum ducimus laboriosam totam quis
-              debitis consectetur deleniti repellat a.
-            </p>
-          </div>
-          <div class="py-4 border-b border-slate-300 dark:border-slate-700">
-            <h3 id="alphabet-info" class="text-lg py-4">Alphabet</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex unde
-              eius quidem nostrum ipsum obcaecati, pariatur totam exercitationem
-              repudiandae? Ut sed voluptatum error in ratione nulla excepturi
-              praesentium ullam nesciunt!
-            </p>
-          </div>
+          <DescriptionPanel />
         </section>
         <footer></footer>
       </div>
