@@ -5,10 +5,14 @@ import DynamicInputField from "@/components/form/DynamicInputField.vue";
 import { ref } from "vue";
 import { InputType } from "@/core/models";
 import { maxValue } from "@/core/validators";
+import { i18n } from "@/i18n/i18n";
+
+i18n.global.locale.value = "en";
 
 describe("Dynamic Input Field", () => {
   it("renders text field", () => {
     const wrapper = mount(DynamicInputField, {
+      global: { plugins: [i18n] },
       props: {
         modelValue: ref(""),
         type: InputType.Text,
@@ -22,6 +26,7 @@ describe("Dynamic Input Field", () => {
 
   it("renders number input", () => {
     const wrapper = mount(DynamicInputField, {
+      global: { plugins: [i18n] },
       props: {
         modelValue: ref(0),
         type: InputType.Number,
@@ -35,6 +40,7 @@ describe("Dynamic Input Field", () => {
 
   it("renders with link", () => {
     const wrapper = mount(DynamicInputField, {
+      global: { plugins: [i18n] },
       props: {
         modelValue: ref(""),
         type: InputType.Text,
@@ -55,6 +61,7 @@ describe("Dynamic Input Field", () => {
     const style = "p-4 rounded-md border-4";
 
     const wrapper = mount(DynamicInputField, {
+      global: { plugins: [i18n] },
       props: {
         modelValue: ref(""),
         type: InputType.Text,
@@ -70,6 +77,7 @@ describe("Dynamic Input Field", () => {
 
   it.todo("shows validation errors", async () => {
     const wrapper = mount(DynamicInputField, {
+      global: { plugins: [i18n] },
       props: {
         modelValue: ref(0),
         type: InputType.Number,

@@ -1,10 +1,3 @@
-// describe("the main page", () => {
-//   beforeEach(() => {
-//     cy.visit("/");
-//     cy.get("#lang-select").select("en");
-//   });
-// });
-
 describe("ceasar cipher", () => {
   beforeEach(() => {
     cy.visit("/");
@@ -33,6 +26,10 @@ describe("ceasar cipher", () => {
           alphabet: "en",
         },
       });
+  });
+
+  it("shows response", () => {
+    cy.get("#result-block").should("have.text", "test message result");
   });
 });
 

@@ -20,3 +20,8 @@ export interface Translation {
   en: { [key: string]: string };
   pl: { [key: string]: string };
 }
+export interface ValidationError {
+  code: string;
+  value: FieldValue;
+  msgAttr?: any;
+}

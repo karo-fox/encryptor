@@ -71,7 +71,7 @@ useToggleDarkMode();
               <div
                 class="min-h-[16rem] bg-slate-50 dark:bg-slate-900 rounded-md border-cyan-500 border-2 border-solid"
               >
-                <CopiableBlock :result="formStore.result" />
+                <CopiableBlock :result="formStore.result" id="result-block" />
               </div>
             </div>
           </output>
