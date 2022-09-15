@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Cipher, useFormStore } from "@/stores/form";
 import { useI18n } from "vue-i18n";
+
+import { useFormStore } from "@/stores/form";
+import { Cipher } from "@/core/models";
 
 const formStore = useFormStore();
 const { t } = useI18n();

@@ -1,21 +1,6 @@
+import { Action, Cipher, type Params } from "@/core/models";
 import { defineStore } from "pinia";
 import { computed, ref, type Ref } from "vue";
-
-export enum Cipher {
-  Ceasar = "ceasar",
-  Switch = "switch",
-}
-
-export enum Action {
-  Encrypt = "encrypt",
-  Decrypt = "decrypt",
-}
-
-export interface Params {
-  alphabet?: string;
-  shift?: number;
-  switchKey?: string;
-}
 
 export const useFormStore = defineStore("form", () => {
   const action = ref(Action.Encrypt);

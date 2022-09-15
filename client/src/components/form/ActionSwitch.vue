@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { Action, useFormStore } from "@/stores/form";
-import { useI18n } from "vue-i18n";
 import { ref, watch, capitalize } from "vue";
+import { useI18n } from "vue-i18n";
+
+import { useFormStore } from "@/stores/form";
+import { Action } from "@/core/models";
 
 const formStore = useFormStore();
 const { t } = useI18n();

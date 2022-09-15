@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { Cipher, useFormStore } from "@/stores/form";
+import { useFormStore } from "@/stores/form";
+import { Cipher } from "@/core/models";
 
 import CeasarParams from "./params/CeasarParams.vue";
 import SwitchParams from "./params/SwitchParams.vue";

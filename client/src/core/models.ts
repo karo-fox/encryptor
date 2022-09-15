@@ -25,3 +25,19 @@ export interface ValidationError {
   value: FieldValue;
   msgAttr?: any;
 }
+
+export enum Cipher {
+  Ceasar = "ceasar",
+  Switch = "switch",
+}
+
+export enum Action {
+  Encrypt = "encrypt",
+  Decrypt = "decrypt",
+}
+
+export interface Params {
+  alphabet?: string;
+  shift?: number;
+  switchKey?: string;
+}

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useFormStore } from "@/stores/form";
-import { useI18n } from "vue-i18n";
 import { capitalize } from "vue";
+import { useI18n } from "vue-i18n";
+
+import { useFormStore } from "@/stores/form";
 
 const formStore = useFormStore();
 const { t } = useI18n();
