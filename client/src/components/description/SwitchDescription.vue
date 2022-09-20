@@ -13,7 +13,7 @@ const { t } = useI18n();
     :params="[{ param: 'switch-key', name: t('switchKey') }]"
   >
     <template #cipher-desc>
-      <p>{{ t("ceasar-desc") }}</p>
+      <p>{{ t("switch-desc") }}</p>
     </template>
     <template #switch-key-desc>
       <p>{{ t("switch-key-desc") }}</p>

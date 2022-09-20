@@ -36,15 +36,12 @@ describe("Dynamic Select Field", () => {
         selectValues: ["a", "b", "c"],
         name: "Test name",
         options: {
-          link: true,
+          link: "test-name",
         },
       },
     });
 
-    expect(wrapper.find("a").attributes()).toHaveProperty(
-      "href",
-      "#info-Test name" // TODO: We have to work on this
-    );
+    expect(wrapper.find("a").attributes()).toHaveProperty("href", "#test-name");
   });
 
   it("renders with style", () => {

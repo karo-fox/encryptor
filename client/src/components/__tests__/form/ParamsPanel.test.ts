@@ -1,11 +1,12 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import { createTestingPinia } from "@pinia/testing";
+import { i18n } from "@/i18n/i18n";
 
-import { Cipher, useFormStore } from "@/stores/form";
+import { useFormStore } from "@/stores/form";
+import { Cipher } from "@/core/models";
 
 import ParamsPanel from "@/components/form/ParamsPanel.vue";
-import { i18n } from "@/i18n/i18n";
 
 i18n.global.locale.value = "en";
 

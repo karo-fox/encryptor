@@ -1,10 +1,13 @@
-import { i18n } from "@/i18n/i18n";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 
-import ActionSwitch from "@/components/form/ActionSwitch.vue";
 import { createTestingPinia } from "@pinia/testing";
-import { Action, useFormStore } from "@/stores/form";
+import { i18n } from "@/i18n/i18n";
+
+import { useFormStore } from "@/stores/form";
+import { Action } from "@/core/models";
+
+import ActionSwitch from "@/components/form/ActionSwitch.vue";
 
 i18n.global.locale.value = "en";
 
