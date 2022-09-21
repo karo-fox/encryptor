@@ -47,7 +47,7 @@ useToggleDarkMode();
           </p>
           <div class="flex justify-center items-center py-4">
             <CipherSelect />
-            <InfoLink link-to="ceasar-info" />
+            <InfoLink :link-to="`info-${formStore.cipher}`" />
           </div>
           <div class="grid md:grid-cols-3">
             <div class="py-4 md:col-span-2">
