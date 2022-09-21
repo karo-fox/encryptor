@@ -24,11 +24,11 @@ watchEffect(() => {
 const options: DynamicFieldOptionsSet = {
   shift: {
     style: "py-4 w-16 ml-8 rounded-md bg-slate-300 text-slate-900 p-2",
-    link: "shift-info",
+    link: "info-shift",
   },
   alphabet: {
     style: "p-4 w-32 ml-8 bg-slate-300 rounded-md text-slate-900",
-    link: "alphabet-info",
+    link: "info-alphabet",
   },
 };
 
