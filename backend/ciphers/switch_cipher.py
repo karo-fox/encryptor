@@ -5,7 +5,9 @@ from ciphers.cipher import Cipher
 class SwitchCipher(Cipher):
     def __init__(self, text, cipher_params) -> None:
         super().__init__(text, cipher_params)
-        assert "switch_key" in cipher_params.keys(), "'switch_key' not specified"
+        assert (
+            "switch_key" in cipher_params.keys()
+        ), f"'switch_key' not specified, {cipher_params.keys()}"
 
     def encrypt(self) -> str:
         cipher_key = self.params["switch_key"].split("-")
