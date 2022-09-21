@@ -14,8 +14,15 @@ dist-ssr
 coverage
 *.local
 
-.vscode
-!.vscode/extensions.json
-.eslintrc.cjs
+/cypress/videos/
+/cypress/screenshots/
 
-*/sample.test.ts
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

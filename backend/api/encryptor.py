@@ -17,12 +17,12 @@ def main():
             context = CipherContext(cipher)
             return jsonify(result=context.encrypt())
         except AssertionError as error:
-            return jsonify(exception=f"bad data: {error.args.__str__()}")
+            return jsonify(exception=f"bad data: {error}")
 
 
 def get_cipher(cipher_data: dict) -> Cipher:
     return available_ciphers()[cipher_data["cipher"]](
-        cipher_data["text"], getSnakeCaseKeys(cipher_data["params"])
+        cipher_data["text"], snake_case_keys(cipher_data["params"])
     )
 
 
@@ -33,6 +33,15 @@ def available_ciphers() -> dict:
     }
 
 
-def getSnakeCaseKeys(dictionary: dict) -> dict:
-    new_keys = [key.replace("-", "_") for key in dictionary.keys()]
+def snake_case_keys(dictionary: dict) -> dict:
+    new_keys = [
+        "".join([snake_cake_char(letter) for letter in key])
+        for key in dictionary.keys()
+    ]
     return dict(zip(new_keys, list(dictionary.values())))
+
+
+def snake_cake_char(char: str) -> str:
+    if char.isupper():
+        return f"_{char.lower()}"
+    return char
