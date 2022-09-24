@@ -10,7 +10,8 @@ class SwitchCipher(Cipher):
         ), f"'switch_key' not specified, {cipher_params.keys()}"
 
     def encrypt(self) -> str:
-        cipher_key = self.params["switch_key"].split("-")
+        cipher_key_str = self.params["switch_key"] + '-' +  self.params["switch_key"].upper()
+        cipher_key = cipher_key_str.split("-")
         key_map = self.get_key_map(cipher_key)
         result = self.text.translate(str.maketrans(key_map))
         return result
