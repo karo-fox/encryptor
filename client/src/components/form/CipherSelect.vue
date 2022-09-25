@@ -26,10 +26,12 @@ const { t } = useI18n();
     "en": {
       "ceasar": "Ceasar cipher",
       "switch": "ga-de-ry-po-lu-ki",
+      "morse": "Morse Code",
     },
     "pl": {
       "ceasar": "Szyfr Cezara",
       "switch": "ga-de-ry-po-lu-ki",
+      "morse": "Alfabet Morse'a",
     }
   }
 </i18n>
