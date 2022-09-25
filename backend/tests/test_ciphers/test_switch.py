@@ -12,7 +12,7 @@ def test_init_with_key_provided():
     assert type(cipher) == SwitchCipher
 
 
-def test_init_without_shift_provided() -> None:
+def test_init_without_key_provided() -> None:
     with pytest.raises(AssertionError):
         params: Dict[
             str,
