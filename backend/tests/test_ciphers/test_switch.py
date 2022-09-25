@@ -36,6 +36,20 @@ def test_encrypt(switch_key: str, expected: str) -> None:
 
     assert result == expected
 
+@pytest.mark.parametrize(
+    "switch_key,expected",
+    [
+        ("ga-de-ry-po-lu-ki", "Tdst Wpye"),
+        ("ko-ni-ec-ma-tu-ry", "Ucsu Wkyd"),
+        ("..", "Test Word"),
+    ],
+)
+def test_encrypt_with_upper(switch_key: str, expected: str) -> None:
+    cipher = SwitchCipher("Test Word", {"switch_key": switch_key})
+    result = cipher.encrypt()
+
+    assert result == expected
+
 
 @pytest.mark.parametrize(
     "cipher_key,expected",
