@@ -6,7 +6,7 @@ class CeasarCipher(Cipher):
         "en": "abcdefghijklmnopqrstuvwxyz",
         "pl": "aąbcćdeęfghijklłmnńoóprsśtuwyzźż",
     }
-    EXCLUDED = " "
+    EXCLUDED = " .,?!:;"
 
     def __init__(self, text, cipher_params) -> None:
         super().__init__(text, cipher_params)
@@ -25,16 +25,15 @@ class CeasarCipher(Cipher):
             result += self.__get_encrypted_char(char)
         return result
 
+    def decrypt(self) -> str:
+        self.shift = len(self.alphabet) - self.shift
+        return self.encrypt()
+
     def __get_encrypted_char(self, char: str) -> str:
         if char in self.EXCLUDED:
             return char
         else:
-            end_index = len(self.alphabet) - self.shift - 1
-            alphabet = self.alphabet.upper() if char.isupper() else self.alphabet
+            alphabet = (self.alphabet.upper() if char.isupper() else self.alphabet) * 2
             char_index = alphabet.find(char)
-            reverse_letters = self.alphabet[end_index:]
-            if char in reverse_letters:
-                reverse_index = char_index - len(alphabet) + self.shift
-                return alphabet[reverse_index]
-            else:
-                return alphabet[char_index + self.shift]
+            return alphabet[char_index + self.shift]
+

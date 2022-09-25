@@ -16,3 +16,6 @@ class CipherContext:
 
     def encrypt(self) -> str:
         return self._cipher.encrypt()
+
+    def decrypt(self) -> str:
+        return self._cipher.decrypt()

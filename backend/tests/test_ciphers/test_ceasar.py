@@ -42,6 +42,7 @@ def test_init_without_alphabet_provided() -> None:
     "shift,expected",
     [
         (1, "uftu"),
+        (20, "nymn"),
         (0, "test"),
     ],
 )
@@ -50,3 +51,18 @@ def test_encrypt(shift: int, expected: str) -> None:
     result = cipher.encrypt()
 
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    "msg,shift",
+    [
+        ("uftu", 1),
+        ("nymn", 20),
+        ("test", 0),
+    ]
+)
+def test_decrypt(msg: str, shift: int) -> None:
+    cipher = CeasarCipher(msg, {"shift": shift})
+    result = cipher.decrypt()
+
+    assert result == "test"

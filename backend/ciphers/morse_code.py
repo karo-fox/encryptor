@@ -28,6 +28,7 @@ class MorseCode(Cipher):
         "z": "--..",
         " ": "",
     }
+    REVERSED_MORSE_CODE=dict([reversed(i) for i in MORSE_CODE.items()])
 
     def __init__(self, text, cipher_params) -> None:
         super().__init__(text, cipher_params)
@@ -38,3 +39,9 @@ class MorseCode(Cipher):
             result += self.MORSE_CODE[char] + "/"
         result += "/"
         return result
+    
+    def decrypt(self) -> str:        
+        result = ""
+        for code in self.text.split('/'):
+            result += self.REVERSED_MORSE_CODE[code]
+        return result.strip()
