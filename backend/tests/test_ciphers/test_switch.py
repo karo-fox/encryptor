@@ -12,7 +12,7 @@ def test_init_with_key_provided():
     assert type(cipher) == SwitchCipher
 
 
-def test_init_without_shift_provided() -> None:
+def test_init_without_key_provided() -> None:
     with pytest.raises(AssertionError):
         params: Dict[
             str,
@@ -32,6 +32,20 @@ def test_init_without_shift_provided() -> None:
 )
 def test_encrypt(switch_key: str, expected: str) -> None:
     cipher = SwitchCipher("test", {"switch_key": switch_key})
+    result = cipher.encrypt()
+
+    assert result == expected
+
+@pytest.mark.parametrize(
+    "switch_key,expected",
+    [
+        ("ga-de-ry-po-lu-ki", "Tdst Wpye"),
+        ("ko-ni-ec-ma-tu-ry", "Ucsu Wkyd"),
+        ("..", "Test Word"),
+    ],
+)
+def test_encrypt_with_upper(switch_key: str, expected: str) -> None:
+    cipher = SwitchCipher("Test Word", {"switch_key": switch_key})
     result = cipher.encrypt()
 
     assert result == expected

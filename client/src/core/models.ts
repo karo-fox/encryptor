@@ -29,6 +29,7 @@ export interface ValidationError {
 export enum Cipher {
   Ceasar = "ceasar",
   Switch = "switch",
+  Morse = "morse",
 }
 
 export enum Action {
