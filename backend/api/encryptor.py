@@ -1,10 +1,11 @@
 from spwd import getspnam
-from flask import Blueprint, request, jsonify, json
-from ciphers.cipher import Cipher
-from ciphers.switch_cipher import SwitchCipher
+
 from ciphers.ceasar_cipher import CeasarCipher
-from ciphers.morse_code import MorseCode
+from ciphers.cipher import Cipher
 from ciphers.cipher_context import CipherContext
+from ciphers.morse_code import MorseCode
+from ciphers.switch_cipher import SwitchCipher
+from flask import Blueprint, json, jsonify, request
 
 bp = Blueprint("encryptor", __name__, url_prefix="/api")
 
@@ -16,7 +17,11 @@ def main():
         try:
             cipher = get_cipher(encryption_data)
             context = CipherContext(cipher)
-            return jsonify(result=context.encrypt())
+            if encryption_data["action"] == "encrypt":
+                result = context.encrypt()
+            elif encryption_data["action"] == "decrypt":
+                result = context.decrypt()
+            return jsonify(result=result)
         except AssertionError as error:
             return jsonify(exception=f"bad data: {error}")
 
