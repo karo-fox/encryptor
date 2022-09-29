@@ -8,18 +8,18 @@ services:
     environment:
       - FLASK_APP=api
       - FLASK_ENV=development
-    command: ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
     volumes:
       - ./backend:/back
+    command: ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
 
   client:
     image: node:17-alpine3.14
     build: ./client
     ports:
       - 3000:3000
-    command: ["npm", "run", "dev"]
     volumes:
       - ./client:/front
+    command: ["npm", "run", "dev"]
 
   reverse_proxy:
     image: nginx:1.21-alpine
