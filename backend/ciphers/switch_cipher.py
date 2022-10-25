@@ -15,6 +15,9 @@ class SwitchCipher(Cipher):
         key_map = self.get_key_map(cipher_key)
         result = self.text.translate(str.maketrans(key_map))
         return result
+    
+    def decrypt(self) -> str:
+        return self.encrypt()
 
     @classmethod
     def get_key_map(cls, cipher_key: List[str]) -> dict:

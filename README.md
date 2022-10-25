@@ -13,7 +13,7 @@ The app is available [here](https://cipherator.herokuapp.com)
 
 Requirements: docker-compose installed
 
-In the projects directory run `docker-compose up`. 
+In the projects directory run `docker-compose up --build`. 
 
 Then visit `localhost:8000` in your browser.
 

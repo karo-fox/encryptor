@@ -18,7 +18,14 @@ watchEffect(() => {
   });
 });
 
-const switchKeySelectOptions = ["ga-de-ry-po-lu-ki", "po-li-ty-ka-re-nu"];
+const switchKeySelectOptions = [
+  "ga-de-ry-po-lu-ki",
+  "po-li-ty-ka-re-nu",
+  "ko-ni-ec-ma-tu-ry",
+  "ma-li-no-we-bu-ty",
+  "bi-tw-ao-ch-mu-ry",
+  "mo-ty-le-cu-da-ki",
+];
 
 const options: DynamicFieldOptionsSet = {
   switchKey: {
@@ -29,12 +36,8 @@ const options: DynamicFieldOptionsSet = {
 </script>
 
 <template>
-  <DynamicSelectField
-    v-model="switchKey"
-    :name="t('switch-key')"
-    :select-values="switchKeySelectOptions"
-    :options="options.switchKey"
-  />
+  <DynamicSelectField v-model="switchKey" :name="t('switch-key')" :select-values="switchKeySelectOptions"
+    :options="options.switchKey" />
 </template>
 
 <i18n>

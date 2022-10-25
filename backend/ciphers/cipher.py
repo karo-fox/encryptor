@@ -10,3 +10,7 @@ class Cipher:
     @abstractmethod
     def encrypt(self) -> str:
         pass
+
+    @abstractmethod
+    def decrypt(self) -> str:
+        pass
