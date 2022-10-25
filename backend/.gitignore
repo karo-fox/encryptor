@@ -3,4 +3,3 @@ venv
 .vscode
 .pytest_cache
 tests/test_sample.py
-.devcontainer.json

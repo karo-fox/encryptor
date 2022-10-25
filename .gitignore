@@ -2,6 +2,4 @@
 .pytest_cache
 .mypy_cache
 release.txt
-nginx
 TODO
-proxy/.devcontainer.json
