@@ -2,10 +2,5 @@
 .pytest_cache
 .mypy_cache
 release.txt
-docker-compose.yml
-*/Dockerfile
-Dockerfile
-nginx.conf
-nginx
 **/tests
 */tests
