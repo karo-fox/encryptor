@@ -1,4 +1,5 @@
 from ciphers.cipher import Cipher
+from ciphers.utils import remove_pl_chars
 
 class MorseCode(Cipher):
     MORSE_CODE = {
@@ -32,6 +33,7 @@ class MorseCode(Cipher):
 
     def __init__(self, text, cipher_params) -> None:
         super().__init__(text, cipher_params)
+        self.text = remove_pl_chars(text)
     
     def encrypt(self) -> str:
         result = ""

@@ -22,4 +22,5 @@ services:
     ports:
       - 8000:8000
     volumes:
-    - ./nginx.conf:/etc/nginx/nginx.conf
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - .:/encryptor:cached

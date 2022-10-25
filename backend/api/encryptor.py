@@ -1,5 +1,3 @@
-from spwd import getspnam
-
 from ciphers.ceasar_cipher import CeasarCipher
 from ciphers.cipher import Cipher
 from ciphers.cipher_context import CipherContext
@@ -8,7 +6,6 @@ from ciphers.switch_cipher import SwitchCipher
 from flask import Blueprint, json, jsonify, request
 
 bp = Blueprint("encryptor", __name__, url_prefix="/api")
-
 
 @bp.route("", methods=["POST"])
 def main():
