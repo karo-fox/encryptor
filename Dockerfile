@@ -22,6 +22,6 @@ RUN pip install -r requirements.txt
 RUN pip install gunicorn
 ENV FLASK_APP=api
 COPY ./backend .
-CMD gunicorn -b "0.0.0.0:5000" "api:create_app()" --deamon && \
-    sed -i -e 's/$PORT/'"$PORT"'\g' /etc/nginx/conf.d/default.conf && \
-    nginx -g 'deamon off;'
+CMD gunicorn -b "0.0.0.0:5000" "api:create_app()" --daemon && \
+    sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && \
+    nginx -g 'daemon off;'
