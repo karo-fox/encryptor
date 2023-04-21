@@ -37,4 +37,17 @@ describe("Params Panel", () => {
 
     expect(wrapper.text()).toContain("Switch key");
   });
+
+  it("renders no params", async () => {
+    const wrapper = mount(ParamsPanel, {
+      global: {
+        plugins: [createTestingPinia(), i18n],
+      },
+    });
+
+    const formStore = useFormStore();
+    await formStore.$patch({ cipher: Cipher.Morse });
+
+    expect(wrapper.text()).toContain("This cipher does'n require any additional settings");
+  });
 });

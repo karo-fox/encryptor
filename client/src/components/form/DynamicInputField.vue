@@ -49,7 +49,7 @@ const errors = computed(() => {
     v-model="value"
     :class="options?.style || ''"
   />
-  <div class="mt-2 text-red-700">
+  <div class="mt-2 text-red-700" id="errors">
     <p v-for="error in errors" :key="`${error.code}-error-option`">
       {{ t(error.code, { attr: error.msgAttr }) }}
     </p>

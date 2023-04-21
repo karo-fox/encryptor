@@ -18,7 +18,9 @@ defineProps<{
     <h2 :id="`info-${cipher}`" class="text-xl py-4">
       {{ t("title-prompt", { cipher: capitalize(cipherName) }) }}
     </h2>
-    <slot name="cipher-desc"></slot>
+    <div id="cipher-desc">
+      <slot name="cipherDesc"></slot>
+    </div>
   </div>
   <div v-if="params">
     <div
@@ -29,7 +31,9 @@ defineProps<{
       <h3 :id="`info-${param.param}`" class="text-lg py-4">
         {{ capitalize(param.name) }}
       </h3>
-      <slot :name="`${param.param}-desc`"></slot>
+      <div id="params-desc">      
+        <slot :name="`${param.param}Desc`"></slot>
+      </div>
     </div>
   </div>
 </template>

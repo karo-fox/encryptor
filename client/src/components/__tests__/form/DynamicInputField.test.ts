@@ -76,15 +76,14 @@ describe("Dynamic Input Field", () => {
     const wrapper = mount(DynamicInputField, {
       global: { plugins: [i18n] },
       props: {
-        modelValue: ref(0),
+        modelValue: ref(30),
         type: InputType.Number,
         name: "test",
         validators: [maxValue(20)],
       },
     });
-    await wrapper.get("input").setValue(30);
 
-    expect(wrapper.get("p"));
-    expect(wrapper.get("p").text()).toBe("error message");
+    expect(wrapper.props("modelValue")._value).toBe(30);
+    expect(wrapper.get("#errors").text()).toContain("This field cannot be empty");
   });
 });

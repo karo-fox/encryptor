@@ -23,7 +23,7 @@ describe("Action Switch", () => {
     expect(wrapper.findAll("button")[1].text()).toBe("Decrypt");
   });
 
-  it.todo("switches button classes", async () => {
+  it("switches button classes", async () => {
     const chosenClass =
       "bg-cyan-500 text-slate-50 dark:bg-cyan-500 dark:text-slate-900";
     const disabledClass =
@@ -44,20 +44,22 @@ describe("Action Switch", () => {
 
     const formStore = useFormStore();
 
-    expect(wrapper.findAll("button")[0].classes()).toContain(
-      chosenClass.split(" ")
+    expect(wrapper.find("#encrypt-action").classes()).toEqual(
+      expect.arrayContaining(chosenClass.split(" "))
     );
-    expect(wrapper.findAll("button")[1].classes()).toContain(
-      disabledClass.split(" ")
+    expect(wrapper.find("#decrypt-action").classes()).toEqual(
+      expect.arrayContaining(disabledClass.split(" "))
     );
 
-    await formStore.$patch({ action: Action.Decrypt });
-
-    expect(wrapper.findAll("button")[0].classes()).toContain(
-      disabledClass.split(" ")
+    // await formStore.$patch({ action: Action.Decrypt });
+    formStore.action = Action.Decrypt;
+    
+    expect(formStore.action).toBe(Action.Decrypt);
+    expect(wrapper.find("#encrypt-action").classes()).toEqual(
+      expect.arrayContaining(disabledClass.split(" "))
     );
-    expect(wrapper.findAll("button")[1].classes()).toContain(
-      chosenClass.split(" ")
+    expect(wrapper.find("#decrypt-action").classes()).toEqual(
+      expect.arrayContaining(chosenClass.split(" "))
     );
   });
 });
