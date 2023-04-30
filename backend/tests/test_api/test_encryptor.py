@@ -25,7 +25,13 @@ import pytest
             {"shift": 1},
             "uftu",
         ),
-
+        (
+            "decrypt",
+            "ceasar",
+            "uftu",
+            {"shift": 1},
+            "test"
+        ),
     ],
 )
 def test_encryptor(

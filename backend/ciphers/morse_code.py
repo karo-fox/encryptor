@@ -1,6 +1,7 @@
 from ciphers.cipher import Cipher
 from ciphers.utils import remove_pl_chars
 
+
 class MorseCode(Cipher):
     MORSE_CODE = {
         "a": ".-",
@@ -29,21 +30,21 @@ class MorseCode(Cipher):
         "z": "--..",
         " ": "",
     }
-    REVERSED_MORSE_CODE=dict([reversed(i) for i in MORSE_CODE.items()])
+    REVERSED_MORSE_CODE = dict([reversed(i) for i in MORSE_CODE.items()])
 
     def __init__(self, text, cipher_params) -> None:
         super().__init__(text, cipher_params)
-        self.text = remove_pl_chars(text)
-    
+        self.text = remove_pl_chars(text.lower())
+
     def encrypt(self) -> str:
         result = ""
         for char in self.text.lower():
             result += self.MORSE_CODE[char] + "/"
         result += "/"
         return result
-    
-    def decrypt(self) -> str:        
+
+    def decrypt(self) -> str:
         result = ""
-        for code in self.text.split('/'):
+        for code in self.text.split("/"):
             result += self.REVERSED_MORSE_CODE[code]
         return result.strip()
